@@ -56,35 +56,36 @@ walking = false
 walking = false
 dx = 0
 dy = 0
+change = 4
 if (keyboard_check(vk_up))
 {
-    dy -= 2;
+    dy -= change;
     anim_counter = 0
 }
 if (keyboard_check(vk_down))
 {
-    dy += 2;
+    dy += change;
     anim_counter = 0
 }
 
 if (keyboard_check(vk_left))
 {
     image_xscale = -1
-    dx -= 2;
+    dx -= change;
     anim_counter = 0
 }
 if (keyboard_check(vk_right))
 {
     image_xscale = 1
-    dx += 2;
+    dx += change;
     anim_counter = 0
 }
 
 
 if (abs(dx) &gt; 0 &amp;&amp; abs(dy) &gt; 0)
 {
-    dx /= sqrt(2)
-    dy /= sqrt(2)
+    dx /= sqrt(change)
+    dy /= sqrt(change)
 }
 
 

@@ -14,6 +14,10 @@
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\scr_inv_inc_amount.gml</script>
+    <script>scripts\scr_inv_gain_item.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\clawdette</object>
     <object>objects\clawson</object>
