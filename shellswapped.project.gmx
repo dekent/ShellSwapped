@@ -14,6 +14,9 @@
     <sprite>sprites\icon_pearl</sprite>
     <sprite>sprites\icon_pebbles</sprite>
     <sprite>sprites\icon_seaweed</sprite>
+    <sprite>sprites\icon_penny</sprite>
+    <sprite>sprites\penny_sprite</sprite>
+    <sprite>sprites\quarter_sprite</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -30,6 +33,10 @@
     <object>objects\inv_pearl</object>
     <object>objects\inv_pebbles</object>
     <object>objects\inv_seaweed</object>
+    <object>objects\pushable</object>
+    <object>objects\quarter</object>
+    <object>objects\pickable</object>
+    <object>objects\penny</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
