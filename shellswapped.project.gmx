@@ -11,6 +11,9 @@
     <sprite>sprites\clawson_idle</sprite>
     <sprite>sprites\aemolie_idle</sprite>
     <sprite>sprites\shelldon_idle</sprite>
+    <sprite>sprites\icon_pearl</sprite>
+    <sprite>sprites\icon_pebbles</sprite>
+    <sprite>sprites\icon_seaweed</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -19,6 +22,10 @@
     <object>objects\clawson</object>
     <object>objects\aemolie</object>
     <object>objects\shelldon</object>
+    <object>objects\inv</object>
+    <object>objects\inv_pearl</object>
+    <object>objects\inv_pebbles</object>
+    <object>objects\inv_seaweed</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
