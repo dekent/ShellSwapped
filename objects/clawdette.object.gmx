@@ -30,6 +30,8 @@ anim_counter_walk = 0
 anim_max = 63
 anim_max_walk = 12
 walking = false
+
+pick_object = noone
 </string>
           </argument>
         </arguments>
@@ -95,7 +97,7 @@ for (i = 0; i &lt; array_length_1d(pushables); i += 1)
     pushables[i] = instance_find(pushable, i);
 }
 
-//apply movement
+//apply horizontal movement and push objects if necessary
 while (abs(dx) &gt; 0)
 {
     if (abs(dx) &gt;= 1)
@@ -155,6 +157,7 @@ while (abs(dx) &gt; 0)
     }
 }
 
+//apply vertical movement and push objects if necessary
 while (abs(dy) &gt; 0)
 {
     if (abs(dy) &gt;= 1)
@@ -213,6 +216,32 @@ while (abs(dy) &gt; 0)
         break
     }
 }
+
+//determine if there's a pickable object nearby and highlight it
+if (pick_object != noone)
+{
+    pick_object.image_index = 0
+}
+pick_object = noone
+pick_threshold = 50
+min_dst = pick_threshold
+for (i = 0; i &lt; instance_number(pickable); i ++)
+{
+    //check for the closest object that's also in range, then highlight it
+    temp_pick_object = instance_find(pickable, i)
+    dst = script_execute(distance, temp_pick_object.x, temp_pick_object.y)
+    if (dst &lt; min_dst)
+    {
+        pick_object = temp_pick_object
+        min_dst = dst
+    }
+}
+if (pick_object != noone)
+{
+    pick_object.image_index = 1
+}
+
+//todo: check for pickup button press
 
 //animation
 if (walking)

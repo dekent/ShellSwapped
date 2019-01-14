@@ -23,6 +23,7 @@
   <scripts name="scripts">
     <script>scripts\scr_inv_inc_amount.gml</script>
     <script>scripts\scr_inv_gain_item.gml</script>
+    <script>scripts\distance.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\clawdette</object>
@@ -33,6 +34,7 @@
     <object>objects\inv_pearl</object>
     <object>objects\inv_pebbles</object>
     <object>objects\inv_seaweed</object>
+    <object>objects\inv_penny</object>
     <object>objects\pushable</object>
     <object>objects\quarter</object>
     <object>objects\pickable</object>
