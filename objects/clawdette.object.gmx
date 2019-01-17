@@ -30,6 +30,8 @@ anim_counter_walk = 0
 anim_max = 63
 anim_max_walk = 12
 walking = false
+
+pick_object = noone
 </string>
           </argument>
         </arguments>
@@ -88,8 +90,14 @@ if (abs(dx) &gt; 0 &amp;&amp; abs(dy) &gt; 0)
     dy /= sqrt(change)
 }
 
+//get a list of all pushable objects
+pushables = array_create(instance_number(pushable))
+for (i = 0; i &lt; array_length_1d(pushables); i += 1)
+{
+    pushables[i] = instance_find(pushable, i);
+}
 
-//apply movement
+//apply horizontal movement and push objects if necessary
 while (abs(dx) &gt; 0)
 {
     if (abs(dx) &gt;= 1)
@@ -103,15 +111,53 @@ while (abs(dx) &gt; 0)
 
     if (place_free(x+step, y))
     {
-        x += step
-        dx -= step
-        walking = true
+        to_move = 0
+        move_count = 0
+        blocked = false
+        for (i = 0; i &lt; array_length_1d(pushables); i += 1)
+        {
+            p = pushables[i]
+            if (instance_place(x+step, y, p))
+            {
+                temp = false
+                with (p)
+                {
+                    other.temp = place_empty(x + other.step, y)
+                }
+                if (temp)
+                {
+                    to_move[move_count] = p
+                    move_count ++
+                }
+                else
+                {
+                    blocked = true
+                    break
+                }
+            }
+        }
+        if (!blocked)
+        {
+            x += step
+            dx -= step
+            walking = true   
+            for (i = 0; i &lt; move_count; i ++)
+            {
+                to_move[i].x += step
+            }     
+        }
+        else
+        {
+            break
+        }
     }
     else
     {
         break
     }
 }
+
+//apply vertical movement and push objects if necessary
 while (abs(dy) &gt; 0)
 {
     if (abs(dy) &gt;= 1)
@@ -125,15 +171,77 @@ while (abs(dy) &gt; 0)
     
     if (place_free(x, y+step))
     {
-        y += step
-        dy -= step
-        walking = true
+        to_move = 0
+        move_count = 0
+        blocked = false
+        for (i = 0; i &lt; array_length_1d(pushables); i += 1)
+        {
+            p = pushables[i]
+            if (instance_place(x, y+step, p))
+            {
+                temp = false
+                with (p)
+                {
+                    other.temp = place_empty(x, y + other.step)
+                }
+                if (temp)
+                {
+                    to_move[move_count] = p
+                    move_count ++
+                }
+                else
+                {
+                    blocked = true
+                    break
+                }
+            }
+        }
+        if (!blocked)
+        {
+            y += step
+            dy -= step
+            walking = true 
+            for (i = 0; i &lt; move_count; i ++)
+            {
+                to_move[i].y += step
+            }     
+        }
+        else
+        {
+            break
+        }
     }
     else
     {
         break
     }
 }
+
+//determine if there's a pickable object nearby and highlight it
+if (pick_object != noone)
+{
+    pick_object.image_index = 0
+}
+pick_object = noone
+pick_threshold = 50
+min_dst = pick_threshold
+for (i = 0; i &lt; instance_number(pickable); i ++)
+{
+    //check for the closest object that's also in range, then highlight it
+    temp_pick_object = instance_find(pickable, i)
+    dst = script_execute(distance, temp_pick_object.x, temp_pick_object.y)
+    if (dst &lt; min_dst)
+    {
+        pick_object = temp_pick_object
+        min_dst = dst
+    }
+}
+if (pick_object != noone)
+{
+    pick_object.image_index = 1
+}
+
+//todo: check for pickup button press
 
 //animation
 if (walking)
