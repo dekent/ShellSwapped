@@ -10,17 +10,7 @@
   <persistent>0</persistent>
   <colour>11523057</colour>
   <showcolour>-1</showcolour>
-  <code>global.inventory = ds_grid_create(10, 2);
-ds_grid_clear(global.inventory, 0); // what if we want to load?
-
-global.rm = room_add();
-
-var slot = 0;
-while (slot &lt; ds_grid_width(global.inventory))
- {
- room_instance_add(global.rm, x+8+(64*slot), y+8, inv);
- slot ++;
- }</code>
+  <code></code>
   <enableViews>-1</enableViews>
   <clearViewBackground>0</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

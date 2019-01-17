@@ -32,6 +32,12 @@ anim_max_walk = 12
 walking = false
 
 pick_object = noone
+
+var global.inventory = array_create(10);
+var global.listOfSprites = array_create(40);
+var global.spriteIndex = 0
+moved = false
+
 </string>
           </argument>
         </arguments>
@@ -59,15 +65,18 @@ walking = false
 dx = 0
 dy = 0
 change = 4
+
 if (keyboard_check(vk_up))
 {
     dy -= change;
     anim_counter = 0
+    moved = true
 }
 if (keyboard_check(vk_down))
 {
     dy += change;
     anim_counter = 0
+    moved = true
 }
 
 if (keyboard_check(vk_left))
@@ -75,12 +84,24 @@ if (keyboard_check(vk_left))
     image_xscale = -1
     dx -= change;
     anim_counter = 0
+    moved = true
 }
 if (keyboard_check(vk_right))
 {
     image_xscale = 1
     dx += change;
     anim_counter = 0
+    moved = true
+}
+
+if (moved == true)
+{
+    for (var i = 0; i &lt; global.spriteIndex; i++;)
+    {
+        sprite_delete(global.listOfSprites[i])
+    }
+    global.spriteIndex = 0
+    moved = false
 }
 
 
@@ -243,6 +264,8 @@ if (pick_object != noone)
 
 //todo: check for pickup button press
 
+//object options: "pearl", "pebble", "seaweed", "penny"
+
 //animation
 if (walking)
 {
@@ -274,6 +297,7 @@ else
     }
 }
 
+//keep her in the room
 x = clamp(x, 0, room_width);
 y = clamp(y, 0, room_height);
 </string>
@@ -305,6 +329,44 @@ draw_sprite_ext(sprite_index, image_index, floor(x + 0.5), floor(y + 0.5), image
         </arguments>
       </action>
     </event>
+    <event eventtype="9" enumb="73">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//pearl, pebble, seaweed, penny
+var alength = array_length_1d(global.inventory);
+var angle = 180;
+
+for (var i = 0; i &lt; alength; i++;)
+{
+    for (var j = 0; j &lt; global.inventory[i]; j++;)
+    {
+        if (i == 0)
+        {
+            global.listOfSprites[global.spriteIndex] = instance_create(x + lengthdir_x(62, angle), y + lengthdir_y(62, angle), inv_pearl)
+        }
+        global.spriteIndex+=1
+        angle-=20
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="9" enumb="48">
       <action>
         <libid>1</libid>
@@ -322,8 +384,7 @@ draw_sprite_ext(sprite_index, image_index, floor(x + 0.5), floor(y + 0.5), image
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_inv_gain_item(inv_pearl, 3);
-scr_inv_inc_amount(3, 2);
+            <string>scr_inv_gain_item("pearl");
 </string>
           </argument>
         </arguments>

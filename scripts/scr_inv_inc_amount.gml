@@ -12,8 +12,8 @@ var amount = argument1;
 global.inventory[# slot, 1] += amount; //Increase amount by input amount
  
 //Clear slot if the amount is less than or equal to 0
-if (global.inventory[# slot, 1] <= 0)
- {
- global.inventory[# slot, 0] = item.none;
- global.inventory[# slot, 1] = 0;
- }
+//if (global.inventory[# slot, 1] <= 0)
+// {
+// global.inventory[# slot, 0] = item.none;
+// global.inventory[# slot, 1] = 0;
+// }
