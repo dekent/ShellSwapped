@@ -27,7 +27,7 @@ slot = 0;
 while (slot < inventory_width)
 {
     //Searching for an empty inventory slot
-    if (global.inventory[# slot, 0] == item.none)
+    if (global.inventory[# slot, 0] == 0)
     {
         global.inventory[# slot, 0] = iid;
         global.inventory[# slot, 1] += amount;

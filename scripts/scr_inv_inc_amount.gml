@@ -1,8 +1,5 @@
 //Inventory code from https://forum.yoyogames.com/index.php?threads/flexible-inventory-system.34884/
 
-global.inventory = ds_grid_create(10, 2);
-ds_grid_clear(globa.inventory, 0); // what if we want to load?
-
 /// @description Modifies a slot in the inventory. Can add and remove items, and set the item.
 /// @function scr_inv_amount(slot, amount);
 /// @param slot

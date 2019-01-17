@@ -10,7 +10,17 @@
   <persistent>0</persistent>
   <colour>11523057</colour>
   <showcolour>-1</showcolour>
-  <code></code>
+  <code>global.inventory = ds_grid_create(10, 2);
+ds_grid_clear(global.inventory, 0); // what if we want to load?
+
+global.rm = room_add();
+
+var slot = 0;
+while (slot &lt; ds_grid_width(global.inventory))
+ {
+ room_instance_add(global.rm, x+8+(64*slot), y+8, inv);
+ slot ++;
+ }</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>0</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -41,7 +51,7 @@
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="-1" objName="clawdette" xview="0" yview="0" wview="700" hview="700" xport="0" yport="0" wport="1024" hport="768" hborder="100" vborder="100" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="clawdette" xview="0" yview="0" wview="768" hview="768" xport="0" yport="0" wport="768" hport="768" hborder="100" vborder="100" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
