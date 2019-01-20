@@ -58,7 +58,7 @@ pick_object = noone
 walking = false
 dx = 0
 dy = 0
-change = 4
+change = 6
 if (keyboard_check(vk_up))
 {
     dy -= change;
@@ -86,8 +86,10 @@ if (keyboard_check(vk_right))
 
 if (abs(dx) &gt; 0 &amp;&amp; abs(dy) &gt; 0)
 {
-    dx /= sqrt(change)
-    dy /= sqrt(change)
+    dx /= sqrt(2)
+    dy /= sqrt(2)
+    dx = floor(dx + 0.5)
+    dy = floor(dy + 0.5)
 }
 
 //get a list of all pushable objects
@@ -223,13 +225,13 @@ if (pick_object != noone)
     pick_object.image_index = 0
 }
 pick_object = noone
-pick_threshold = 50
+pick_threshold = 100
 min_dst = pick_threshold
 for (i = 0; i &lt; instance_number(pickable); i ++)
 {
     //check for the closest object that's also in range, then highlight it
     temp_pick_object = instance_find(pickable, i)
-    dst = script_execute(distance, temp_pick_object.x, temp_pick_object.y)
+    dst = script_execute(distance_from_player, temp_pick_object.x, temp_pick_object.y)
     if (dst &lt; min_dst)
     {
         pick_object = temp_pick_object
@@ -295,7 +297,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>depth = -y - 12
+            <string>depth = -y - 24
 draw_sprite_ext(sprite_index, image_index, floor(x + 0.5), floor(y + 0.5), image_xscale, image_yscale, image_angle, image_blend, image_alpha)
 </string>
           </argument>

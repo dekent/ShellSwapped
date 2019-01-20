@@ -96,7 +96,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>depth = -y - 16
+            <string>depth = -y - 32
 draw_self()
 </string>
           </argument>

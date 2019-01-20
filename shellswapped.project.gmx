@@ -9,27 +9,38 @@
     <sprite>sprites\clawdette_idle</sprite>
     <sprite>sprites\clawdette_walk</sprite>
     <sprite>sprites\clawson_idle</sprite>
-    <sprite>sprites\aemolie_idle</sprite>
+    <sprite>sprites\emolie_idle</sprite>
     <sprite>sprites\shelldon_idle</sprite>
     <sprite>sprites\icon_pearl</sprite>
     <sprite>sprites\icon_pebbles</sprite>
     <sprite>sprites\icon_seaweed</sprite>
     <sprite>sprites\icon_penny</sprite>
+    <sprite>sprites\pearl_sprite</sprite>
+    <sprite>sprites\pebble_sprite</sprite>
+    <sprite>sprites\seaweed_sprite</sprite>
     <sprite>sprites\penny_sprite</sprite>
     <sprite>sprites\quarter_sprite</sprite>
+    <sprite>sprites\oyster_closed_idle</sprite>
+    <sprite>sprites\oyster_open_idle</sprite>
+    <sprite>sprites\oyster_transition</sprite>
+    <sprite>sprites\armando_down_idle</sprite>
+    <sprite>sprites\armando_up_idle</sprite>
+    <sprite>sprites\armando_transition</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_inv_inc_amount.gml</script>
     <script>scripts\scr_inv_gain_item.gml</script>
-    <script>scripts\distance.gml</script>
+    <script>scripts\distance_from_player.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\clawdette</object>
     <object>objects\clawson</object>
-    <object>objects\aemolie</object>
+    <object>objects\emolie</object>
     <object>objects\shelldon</object>
+    <object>objects\oyster</object>
+    <object>objects\armando</object>
     <object>objects\inv</object>
     <object>objects\inv_pearl</object>
     <object>objects\inv_pebbles</object>
@@ -39,6 +50,9 @@
     <object>objects\quarter</object>
     <object>objects\pickable</object>
     <object>objects\penny</object>
+    <object>objects\pearl</object>
+    <object>objects\pebble</object>
+    <object>objects\seaweed</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
