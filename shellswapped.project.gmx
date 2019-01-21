@@ -32,6 +32,8 @@
   <scripts name="scripts">
     <script>scripts\scr_inv_gain_item.gml</script>
     <script>scripts\distance_from_player.gml</script>
+    <script>scripts\distance.gml</script>
+    <script>scripts\item_to_index.gml</script>
     <script>scripts\scr_inv_rm_item.gml</script>
   </scripts>
   <objects name="objects">

@@ -10,7 +10,7 @@
   <persistent>0</persistent>
   <colour>11523057</colour>
   <showcolour>-1</showcolour>
-  <code></code>
+  <code>randomize()</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>0</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -57,7 +57,7 @@
     <instance objName="shelldon" x="411" y="84" name="inst_15A81AB8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="quarter" x="1076" y="506" name="inst_F6FC0716" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="quarter" x="180" y="178" name="inst_94845F19" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="penny" x="566" y="231" name="inst_835E624E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="penny" x="710" y="386" name="inst_835E624E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="penny" x="228" y="443" name="inst_2FF467E4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="pearl" x="891" y="398" name="inst_3399B6B1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="pebble" x="979" y="107" name="inst_15DE7343" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

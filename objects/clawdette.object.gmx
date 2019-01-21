@@ -243,7 +243,14 @@ while (abs(dy) &gt; 0)
 //determine if there's a pickable object nearby and highlight it
 if (pick_object != noone)
 {
-    pick_object.image_index = 0
+    if (instance_exists(pick_object))
+    {
+        pick_object.image_index = 0
+    }
+    else
+    {
+        pick_object = noone
+    }
 }
 pick_object = noone
 pick_threshold = 100

@@ -35,6 +35,7 @@ cy = y + 64
 
 state = 0  // 0: closed idle,  1: opening,  2: open idle,  3: closing
 active_threshold = 200
+trade_radius = 150
 </string>
           </argument>
         </arguments>
