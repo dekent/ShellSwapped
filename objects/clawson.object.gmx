@@ -69,60 +69,60 @@ trades[1] = quarter
           <argument>
             <kind>1</kind>
             <string>// trade stuff
-player = instance_find(clawdette, 0)
-dst = 0
+var player = instance_find(clawdette, 0)
+var dst = 0
 with (player)
 {
-    other.dst = script_execute(distance_from_player, other.cx, other.cy)
+    dst = script_execute(distance_from_player, other.cx, other.cy)
 }
 if (dst &lt; trade_radius &amp;&amp; keyboard_check_pressed(ord('X')))
 {
-    sum = 0
-    trade_item_count = 0
-    trade_items = 0
+    var sum = 0
+    var trade_item_count = 0
+    var trade_items = 0
     for (i = 0; i &lt; instance_number(pushable); i += 1)
     {
-        item = instance_find(pushable, i);
+        var item = instance_find(pushable, i);
         with (item)
         {
             if (script_execute(distance, other.cx, other.cy) &lt; other.trade_radius)
             {
-                other.sum += other.value[script_execute(item_to_index, object_index)]
-                other.trade_items[other.trade_item_count] = other.item
-                other.trade_item_count ++
+                sum += other.value[script_execute(item_to_index, object_index)]
+                trade_items[trade_item_count] = item
+                trade_item_count ++
             }
         }
     }
-    for (i = 0; i &lt; instance_number(pickable); i += 1)
+    for (var i = 0; i &lt; instance_number(pickable); i += 1)
     {
-        item = instance_find(pickable, i);
+        var item = instance_find(pickable, i);
         with (item)
         {
             if (script_execute(distance, other.cx, other.cy) &lt; other.trade_radius)
             {
-                other.sum += other.value[script_execute(item_to_index, object_index)]
-                other.trade_items[other.trade_item_count] = other.item
-                other.trade_item_count ++
+                sum += other.value[script_execute(item_to_index, object_index)]
+                trade_items[trade_item_count] = item
+                trade_item_count ++
             }
         }
     }
     
     if (sum &gt; trade_amounts[current_trade])
     {
-        for (i = array_length_1d(trade_items) - 1; i &gt;= 0; i --)
+        for (var i = array_length_1d(trade_items) - 1; i &gt;= 0; i --)
         {
             instance_destroy(trade_items[i])
         }
         
         draw_text(cx, cy+200, trade_items[0])
-        new_item = instance_create(-100, -100, trades[current_trade])
+        var new_item = instance_create(-100, -100, trades[current_trade])
         // find a free x, y position
-        placed = false
+        var placed = false
         while (!placed)
         {
             // todo: switch this to random angle and random distance
-            newx = irandom(trade_radius*2) - trade_radius
-            newy = irandom(trade_radius)
+            var newx = irandom(trade_radius*2) - trade_radius
+            var newy = irandom(trade_radius)
             if (sqrt(sqr(newx) + sqr(newy)) &gt; trade_radius)
             {
                 continue
@@ -132,11 +132,11 @@ if (dst &lt; trade_radius &amp;&amp; keyboard_check_pressed(ord('X')))
             
             with (new_item)
             {
-                if (place_empty(other.newx, other.newy))
+                if (place_empty(newx, newy))
                 {
-                    x = other.newx
-                    y = other.newy
-                    other.placed = true
+                    x = newx
+                    y = newy
+                    placed = true
                 }
             }
         }

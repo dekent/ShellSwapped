@@ -62,9 +62,10 @@ moved = false
             <kind>1</kind>
             <string>//movement
 walking = false
-dx = 0
-dy = 0
-change = 6
+moved = false
+var dx = 0
+var dy = 0
+var change = 6
 
 if (keyboard_check(vk_up))
 {
@@ -114,8 +115,8 @@ if (abs(dx) &gt; 0 &amp;&amp; abs(dy) &gt; 0)
 }
 
 //get a list of all pushable objects
-pushables = array_create(instance_number(pushable))
-for (i = 0; i &lt; array_length_1d(pushables); i += 1)
+var pushables = array_create(instance_number(pushable))
+for (var i = 0; i &lt; array_length_1d(pushables); i += 1)
 {
     pushables[i] = instance_find(pushable, i);
 }
@@ -125,27 +126,27 @@ while (abs(dx) &gt; 0)
 {
     if (abs(dx) &gt;= 1)
     {
-        step = sign(dx)
+        var step = sign(dx)
     }
     else
     {
-        step = dx
+        var step = dx
     }
 
     if (place_free(x+step, y))
     {
-        to_move = 0
-        move_count = 0
-        blocked = false
+        var to_move = 0
+        var move_count = 0
+        var blocked = false
         for (i = 0; i &lt; array_length_1d(pushables); i += 1)
         {
             p = pushables[i]
             if (instance_place(x+step, y, p))
             {
-                temp = false
+                var temp = false
                 with (p)
                 {
-                    other.temp = place_empty(x + other.step, y)
+                    temp = place_empty(x + step, y)
                 }
                 if (temp)
                 {
@@ -185,27 +186,27 @@ while (abs(dy) &gt; 0)
 {
     if (abs(dy) &gt;= 1)
     {
-        step = sign(dy)
+        var step = sign(dy)
     }
     else
     {
-        step = dy
+        var step = dy
     }
     
     if (place_free(x, y+step))
     {
-        to_move = 0
-        move_count = 0
-        blocked = false
+        var to_move = 0
+        var move_count = 0
+        var blocked = false
         for (i = 0; i &lt; array_length_1d(pushables); i += 1)
         {
             p = pushables[i]
             if (instance_place(x, y+step, p))
             {
-                temp = false
+                var temp = false
                 with (p)
                 {
-                    other.temp = place_empty(x, y + other.step)
+                    temp = place_empty(x, y + step)
                 }
                 if (temp)
                 {
