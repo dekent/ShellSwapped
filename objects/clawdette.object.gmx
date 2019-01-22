@@ -35,7 +35,7 @@ pick_object = noone
 
 var global.inventory = array_create(10);
 var global.listOfSprites = array_create(40);
-var global.spriteIndex = 0
+var global.numSpritesToRemove = 0
 moved = false
 
 </string>
@@ -71,13 +71,11 @@ if (keyboard_check(vk_up))
 {
     dy -= change;
     anim_counter = 0
-    moved = true
 }
 if (keyboard_check(vk_down))
 {
     dy += change;
     anim_counter = 0
-    moved = true
 }
 
 if (keyboard_check(vk_left))
@@ -85,26 +83,13 @@ if (keyboard_check(vk_left))
     image_xscale = -1
     dx -= change;
     anim_counter = 0
-    moved = true
 }
 if (keyboard_check(vk_right))
 {
     image_xscale = 1
     dx += change;
     anim_counter = 0
-    moved = true
 }
-
-if (moved == true)
-{
-    for (var i = 0; i &lt; global.spriteIndex; i++;)
-    {
-        sprite_delete(global.listOfSprites[i])
-    }
-    global.spriteIndex = 0
-    moved = false
-}
-
 
 if (abs(dx) &gt; 0 &amp;&amp; abs(dy) &gt; 0)
 {
@@ -281,6 +266,7 @@ if (walking)
 {
     image_speed = 0.333
     sprite_index = clawdette_walk
+    clearInvSprites()
 }
 else
 {
@@ -366,35 +352,12 @@ for (var i = 0; i &lt; alength; i++;)
     {
         if (i == 0)
         {
-            global.listOfSprites[global.spriteIndex] = instance_create(x + lengthdir_x(62, angle), y + lengthdir_y(62, angle), inv_pearl)
+            global.listOfSprites[global.numSpritesToRemove] = instance_create(x + lengthdir_x(62, angle), y + lengthdir_y(62, angle), inv_pearl)
         }
-        global.spriteIndex+=1
+        global.numSpritesToRemove+=1
         angle-=20
     }
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="48">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>scr_inv_gain_item("pearl");
 </string>
           </argument>
         </arguments>
