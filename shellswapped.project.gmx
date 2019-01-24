@@ -26,8 +26,12 @@
     <sprite>sprites\armando_down_idle</sprite>
     <sprite>sprites\armando_up_idle</sprite>
     <sprite>sprites\armando_transition</sprite>
+    <sprite>sprites\wave_in</sprite>
+    <sprite>sprites\wave_out</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\background0</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_inv_gain_item.gml</script>
@@ -55,6 +59,7 @@
     <object>objects\pearl</object>
     <object>objects\pebble</object>
     <object>objects\seaweed</object>
+    <object>objects\wave</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
