@@ -39,6 +39,7 @@
     <script>scripts\distance.gml</script>
     <script>scripts\item_to_index.gml</script>
     <script>scripts\scr_inv_rm_item.gml</script>
+    <script>scripts\clearInvSprites.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\clawdette</object>
