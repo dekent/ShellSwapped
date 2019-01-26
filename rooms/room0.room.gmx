@@ -13,7 +13,17 @@
   <code>randomize()
 draw_set_font(font0)
 draw_set_halign(fa_center)
-draw_set_valign(fa_bottom)</code>
+draw_set_valign(fa_bottom)
+
+global.inventory = array_create(10)
+global.inv_sprites = 0
+
+scr_inv_gain_item(pearl)
+scr_inv_gain_item(pebble)
+scr_inv_gain_item(pearl)
+scr_inv_gain_item(seaweed)
+scr_inv_gain_item(penny)
+scr_inv_gain_item(penny)</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>0</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

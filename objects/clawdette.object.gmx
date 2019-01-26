@@ -35,22 +35,12 @@ walking = false
 
 pick_object = noone
 
-var global.inventory = array_create(10);
-var global.listOfSprites = array_create(500);
-var global.numSpritesToRemove = 0
 moved = false
 
 text_timer = 0
 active_text = ""
 tx = x
 ty = y
-
-scr_inv_gain_item(pearl)
-scr_inv_gain_item(pebble)
-scr_inv_gain_item(pearl)
-scr_inv_gain_item(seaweed)
-scr_inv_gain_item(penny)
-scr_inv_gain_item(penny)
 </string>
           </argument>
         </arguments>
@@ -286,9 +276,15 @@ switch (mode)
         if (pick_object != noone)
         {
             pick_object.image_index = 1
+            
+            //todo: check for pickup button press
+            if (keyboard_check_pressed(ord('Z')))
+            {
+                scr_inv_gain_item(pick_object.object_index)
+                instance_destroy(pick_object.id)
+                pick_object = noone
+            }
         }
-        
-        //todo: check for pickup button press
         
         //object options: "pearl", "pebble", "seaweed", "penny"
         
@@ -301,7 +297,7 @@ switch (mode)
         }
         
         //talking
-        if (keyboard_check_pressed(ord('Z')))
+        if (keyboard_check_pressed(ord('C')))
         {
             active_text = choose("hi", "hi.", "hey", "hey.")
             text_timer = 10
@@ -378,15 +374,15 @@ switch (mode)
         else if (anim_counter == anim_max)
         {
             // display inventory
-            var alength = array_length_1d(global.inventory);
-            var angle = 180;
-            for (var i = 0; i &lt; alength; i++;)
+            var angle = 180
+            var sprite_count = 0
+            for (var i = 0; i &lt; array_length_1d(global.inventory); i++)
             {
-                for (var j = 0; j &lt; global.inventory[i]; j++;)
+                for (var j = 0; j &lt; global.inventory[i]; j++)
                 {
-                    global.listOfSprites[global.numSpritesToRemove] = instance_create(floor(x - 24 + lengthdir_x(75, angle) + 0.5), floor(y + 32 + lengthdir_y(75, angle) + 0.5), script_execute(index_to_inv_item, i))
-                    global.numSpritesToRemove ++
+                    global.inv_sprites[sprite_count] = instance_create(floor(x - image_xscale*24 + lengthdir_x(80, angle) + 0.5), floor(y + 32 + lengthdir_y(80, angle) + 0.5), script_execute(index_to_inv_item, i))
                     angle -= 20
+                    sprite_count ++
                 }
             }
             
@@ -516,16 +512,15 @@ if (text_timer &gt; 0)
           <argument>
             <kind>1</kind>
             <string>//pearl, pebble, seaweed, penny
-var alength = array_length_1d(global.inventory);
-var angle = 180;
-
-for (var i = 0; i &lt; alength; i++;)
+var angle = 180
+var sprite_count = 0
+for (var i = 0; i &lt; array_length_1d(global.inventory); i++)
 {
-    for (var j = 0; j &lt; global.inventory[i]; j++;)
+    for (var j = 0; j &lt; global.inventory[i]; j++)
     {
-        global.listOfSprites[global.numSpritesToRemove] = instance_create(floor(x - 24 + lengthdir_x(75, angle) + 0.5), floor(y + 32 + lengthdir_y(75, angle) + 0.5), script_execute(index_to_inv_item, i))
-        global.numSpritesToRemove ++
+        global.inv_sprites[sprite_count] = instance_create(floor(x - 24 + lengthdir_x(75, angle) + 0.5), floor(y + 32 + lengthdir_y(75, angle) + 0.5), script_execute(index_to_inv_item, i))
         angle -= 20
+        sprite_count ++
     }
 }
 </string>
