@@ -1,6 +1,6 @@
-for (var i = 0; i < global.numSpritesToRemove; i++;)
+for (var i = global.numSpritesToRemove; i >= 0; i--)
 {
-    sprite_delete(global.listOfSprites[i]);
+    instance_destroy(global.listOfSprites[i])
 }
 
-global.numSpritesToRemove = 0;
+global.numSpritesToRemove = 0

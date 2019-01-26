@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>anim_counter = 0
+            <string>mode = 0  // 0: out of shell, 1: retracting, 2: in shell, 3: extracting
+
+anim_counter = 0
 anim_counter_walk = 0
 anim_max = 63
 anim_max_walk = 12
@@ -34,10 +36,21 @@ walking = false
 pick_object = noone
 
 var global.inventory = array_create(10);
-var global.listOfSprites = array_create(40);
+var global.listOfSprites = array_create(500);
 var global.numSpritesToRemove = 0
 moved = false
 
+text_timer = 0
+active_text = ""
+tx = x
+ty = y
+
+scr_inv_gain_item(pearl)
+scr_inv_gain_item(pebble)
+scr_inv_gain_item(pearl)
+scr_inv_gain_item(seaweed)
+scr_inv_gain_item(penny)
+scr_inv_gain_item(penny)
 </string>
           </argument>
         </arguments>
@@ -67,235 +80,388 @@ var dx = 0
 var dy = 0
 var change = 6
 
-if (keyboard_check(vk_up))
+switch (mode)
 {
-    dy -= change;
-    anim_counter = 0
-}
-if (keyboard_check(vk_down))
-{
-    dy += change;
-    anim_counter = 0
-}
-
-if (keyboard_check(vk_left))
-{
-    image_xscale = -1
-    dx -= change;
-    anim_counter = 0
-}
-if (keyboard_check(vk_right))
-{
-    image_xscale = 1
-    dx += change;
-    anim_counter = 0
-}
-
-if (abs(dx) &gt; 0 &amp;&amp; abs(dy) &gt; 0)
-{
-    dx /= sqrt(2)
-    dy /= sqrt(2)
-    dx = floor(dx + 0.5)
-    dy = floor(dy + 0.5)
-}
-
-//get a list of all pushable objects
-var pushables = array_create(instance_number(pushable))
-for (var i = 0; i &lt; array_length_1d(pushables); i += 1)
-{
-    pushables[i] = instance_find(pushable, i);
-}
-
-//apply horizontal movement and push objects if necessary
-while (abs(dx) &gt; 0)
-{
-    if (abs(dx) &gt;= 1)
-    {
-        var step = sign(dx)
-    }
-    else
-    {
-        var step = dx
-    }
-
-    if (place_free(x+step, y))
-    {
-        var to_move = 0
-        var move_count = 0
-        var blocked = false
-        for (i = 0; i &lt; array_length_1d(pushables); i += 1)
+    case 0:
+        // out of shell
+        
+        // check for retracting
+        if (keyboard_check(vk_space))
         {
-            p = pushables[i]
-            if (instance_place(x+step, y, p))
+            image_speed = 0
+            mode = 1
+            sprite_index = clawdette_retract
+            image_index = 0
+            anim_counter = 0
+            anim_max = 45
+            exit
+        }
+        
+        // movement
+        if (keyboard_check(vk_up))
+        {
+            dy -= change;
+            anim_counter = 0
+        }
+        if (keyboard_check(vk_down))
+        {
+            dy += change;
+            anim_counter = 0
+        }
+        
+        if (keyboard_check(vk_left))
+        {
+            image_xscale = -1
+            dx -= change;
+            anim_counter = 0
+        }
+        if (keyboard_check(vk_right))
+        {
+            image_xscale = 1
+            dx += change;
+            anim_counter = 0
+        }
+        
+        if (abs(dx) &gt; 0 &amp;&amp; abs(dy) &gt; 0)
+        {
+            dx /= sqrt(2)
+            dy /= sqrt(2)
+            dx = floor(dx + 0.5)
+            dy = floor(dy + 0.5)
+        }
+        
+        //get a list of all pushable objects
+        var pushables = array_create(instance_number(pushable))
+        for (var i = 0; i &lt; array_length_1d(pushables); i += 1)
+        {
+            pushables[i] = instance_find(pushable, i);
+        }
+        
+        //apply horizontal movement and push objects if necessary
+        while (abs(dx) &gt; 0)
+        {
+            if (abs(dx) &gt;= 1)
             {
-                var temp = false
-                with (p)
+                var step = sign(dx)
+            }
+            else
+            {
+                var step = dx
+            }
+        
+            if (place_free(x+step, y))
+            {
+                var to_move = 0
+                var move_count = 0
+                var blocked = false
+                for (i = 0; i &lt; array_length_1d(pushables); i += 1)
                 {
-                    temp = place_empty(x + step, y)
+                    p = pushables[i]
+                    if (instance_place(x+step, y, p))
+                    {
+                        var temp = false
+                        with (p)
+                        {
+                            temp = place_empty(x + step, y)
+                        }
+                        if (temp)
+                        {
+                            to_move[move_count] = p
+                            move_count ++
+                        }
+                        else
+                        {
+                            blocked = true
+                            break
+                        }
+                    }
                 }
-                if (temp)
+                if (!blocked)
                 {
-                    to_move[move_count] = p
-                    move_count ++
+                    x += step
+                    dx -= step
+                    walking = true   
+                    for (i = 0; i &lt; move_count; i ++)
+                    {
+                        to_move[i].x += step
+                    }     
                 }
                 else
                 {
-                    blocked = true
                     break
                 }
             }
-        }
-        if (!blocked)
-        {
-            x += step
-            dx -= step
-            walking = true   
-            for (i = 0; i &lt; move_count; i ++)
+            else
             {
-                to_move[i].x += step
-            }     
+                break
+            }
         }
-        else
+        
+        //apply vertical movement and push objects if necessary
+        while (abs(dy) &gt; 0)
         {
-            break
-        }
-    }
-    else
-    {
-        break
-    }
-}
-
-//apply vertical movement and push objects if necessary
-while (abs(dy) &gt; 0)
-{
-    if (abs(dy) &gt;= 1)
-    {
-        var step = sign(dy)
-    }
-    else
-    {
-        var step = dy
-    }
-    
-    if (place_free(x, y+step))
-    {
-        var to_move = 0
-        var move_count = 0
-        var blocked = false
-        for (i = 0; i &lt; array_length_1d(pushables); i += 1)
-        {
-            p = pushables[i]
-            if (instance_place(x, y+step, p))
+            if (abs(dy) &gt;= 1)
             {
-                var temp = false
-                with (p)
+                var step = sign(dy)
+            }
+            else
+            {
+                var step = dy
+            }
+            
+            if (place_free(x, y+step))
+            {
+                var to_move = 0
+                var move_count = 0
+                var blocked = false
+                for (i = 0; i &lt; array_length_1d(pushables); i += 1)
                 {
-                    temp = place_empty(x, y + step)
+                    p = pushables[i]
+                    if (instance_place(x, y+step, p))
+                    {
+                        var temp = false
+                        with (p)
+                        {
+                            temp = place_empty(x, y + step)
+                        }
+                        if (temp)
+                        {
+                            to_move[move_count] = p
+                            move_count ++
+                        }
+                        else
+                        {
+                            blocked = true
+                            break
+                        }
+                    }
                 }
-                if (temp)
+                if (!blocked)
                 {
-                    to_move[move_count] = p
-                    move_count ++
+                    y += step
+                    dy -= step
+                    walking = true 
+                    for (i = 0; i &lt; move_count; i ++)
+                    {
+                        to_move[i].y += step
+                    }     
                 }
                 else
                 {
-                    blocked = true
                     break
                 }
             }
-        }
-        if (!blocked)
-        {
-            y += step
-            dy -= step
-            walking = true 
-            for (i = 0; i &lt; move_count; i ++)
+            else
             {
-                to_move[i].y += step
-            }     
+                break
+            }
         }
-        else
+        
+        //determine if there's a pickable object nearby and highlight it
+        if (pick_object != noone)
         {
-            break
+            if (instance_exists(pick_object))
+            {
+                pick_object.image_index = 0
+            }
+            else
+            {
+                pick_object = noone
+            }
         }
-    }
-    else
-    {
-        break
-    }
-}
-
-//determine if there's a pickable object nearby and highlight it
-if (pick_object != noone)
-{
-    if (instance_exists(pick_object))
-    {
-        pick_object.image_index = 0
-    }
-    else
-    {
         pick_object = noone
-    }
-}
-pick_object = noone
-pick_threshold = 100
-min_dst = pick_threshold
-for (i = 0; i &lt; instance_number(pickable); i ++)
-{
-    //check for the closest object that's also in range, then highlight it
-    temp_pick_object = instance_find(pickable, i)
-    dst = script_execute(distance_from_player, temp_pick_object.x, temp_pick_object.y)
-    if (dst &lt; min_dst)
-    {
-        pick_object = temp_pick_object
-        min_dst = dst
-    }
-}
-if (pick_object != noone)
-{
-    pick_object.image_index = 1
-}
+        pick_threshold = 100
+        min_dst = pick_threshold
+        for (i = 0; i &lt; instance_number(pickable); i ++)
+        {
+            //check for the closest object that's also in range, then highlight it
+            temp_pick_object = instance_find(pickable, i)
+            dst = script_execute(distance_from_player, temp_pick_object.x, temp_pick_object.y)
+            if (dst &lt; min_dst)
+            {
+                pick_object = temp_pick_object
+                min_dst = dst
+            }
+        }
+        if (pick_object != noone)
+        {
+            pick_object.image_index = 1
+        }
+        
+        //todo: check for pickup button press
+        
+        //object options: "pearl", "pebble", "seaweed", "penny"
+        
+        
+        //text updates
+        if (text_timer &gt; 0)
+        {
+            ty -= 2
+            text_timer --
+        }
+        
+        //talking
+        if (keyboard_check_pressed(ord('Z')))
+        {
+            active_text = choose("hi", "hi.", "hey", "hey.")
+            text_timer = 10
+            var d = random_range(50, 60)
+            var angle = random_range(pi, 2*pi)
+            if (angle &gt; 5*pi/4 &amp;&amp; angle &lt; 7*pi/4)
+            {
+                d -= 10
+            }
+            tx = x + d*cos(angle)
+            ty = y + d*sin(angle)
+        }
+        
+        if (keyboard_check_pressed(ord('X')))
+        {
+            active_text = choose("trade?", "trade??", "deal?", "trade")
+            text_timer = 10
+            var d = random_range(70, 80)
+            var angle = random_range(3.14, 6.28)
+            if (angle &gt; 5*pi/4 &amp;&amp; angle &lt; 7*pi/4)
+            {
+                d -= 20
+            }
+            tx = x + d*cos(angle)
+            ty = y + d*sin(angle)
+        }
+        
+        //animation
+        if (walking)
+        {
+            image_speed = 0.333
+            sprite_index = clawdette_walk
+        }
+        else
+        {
+            x = floor(x+0.5)
+            y = floor(y+0.5)
+            anim_counter = (anim_counter + 1) % anim_max
+            sprite_index = clawdette_idle
+            image_speed = 0
+            if (anim_counter &gt;= 60)
+            {
+                image_index = 3
+            }
+            else if (anim_counter &gt;= 54)
+            {
+                image_index = 2
+            }
+            else if (anim_counter &gt;= 48)
+            {
+                image_index = 1
+            }
+            else
+            {
+                image_index = 0
+            }
+        }
 
-//todo: check for pickup button press
-
-//object options: "pearl", "pebble", "seaweed", "penny"
-
-//animation
-if (walking)
-{
-    image_speed = 0.333
-    sprite_index = clawdette_walk
-    clearInvSprites()
+        //keep her in the room
+        x = clamp(x, 0, room_width);
+        y = clamp(y, 0, room_height);
+    break
+    case 1:
+        // retracting
+        
+        anim_counter ++
+        if (anim_counter &lt;= 33)
+        {
+            if (anim_counter % 3 == 0)
+            {
+                image_index ++
+            }
+        }
+        else if (anim_counter == anim_max)
+        {
+            // display inventory
+            var alength = array_length_1d(global.inventory);
+            var angle = 180;
+            for (var i = 0; i &lt; alength; i++;)
+            {
+                for (var j = 0; j &lt; global.inventory[i]; j++;)
+                {
+                    global.listOfSprites[global.numSpritesToRemove] = instance_create(floor(x - 24 + lengthdir_x(75, angle) + 0.5), floor(y + 32 + lengthdir_y(75, angle) + 0.5), script_execute(index_to_inv_item, i))
+                    global.numSpritesToRemove ++
+                    angle -= 20
+                }
+            }
+            
+            // switch to in shell
+            mode = 2
+            sprite_index = clawdette_shell
+            image_index = 0
+            anim_counter = 0
+            anim_max = 57
+            exit
+        }
+    
+    break
+    case 2:
+        // in shell
+        
+        // finished inventory mode check
+        if (!keyboard_check(vk_space))
+        {
+            // clear inventory sprites
+            script_execute(clearInvSprites)
+            
+            // switch to extracting
+            mode = 3
+            sprite_index = clawdette_extract
+            image_index = 0
+            anim_counter = 0
+            anim_max = 24
+            exit
+        }
+        
+        // inventory control
+        
+        
+        // animation
+        anim_counter = (anim_counter + 1) % anim_max
+        if (anim_counter == 0)
+        {
+            image_index = 0
+        }
+        else if (anim_counter == 30)
+        {
+            image_index ++
+        }
+        else if (anim_counter == 33)
+        {
+            image_index ++
+        }
+        else if (anim_counter == 54)
+        {
+            image_index ++
+        }
+        
+    break
+    case 3:
+        // extracting
+        anim_counter ++
+        if (anim_counter &gt; 6 &amp;&amp; anim_counter &lt; 24)
+        {
+            if (anim_counter % 3 == 0)
+            {
+                image_index ++
+            }
+        }
+        else if (anim_counter == anim_max)
+        {
+            mode = 0
+            sprite_index = clawdette_idle
+            image_index = 0
+            anim_counter = 0
+            anim_max = 63
+            exit
+        }
+    break
 }
-else
-{
-    x = floor(x+0.5)
-    y = floor(y+0.5)
-    anim_counter = (anim_counter + 1) % anim_max
-    sprite_index = clawdette_idle
-    image_speed = 0
-    if (anim_counter &gt;= 60)
-    {
-        image_index = 3
-    }
-    else if (anim_counter &gt;= 54)
-    {
-        image_index = 2
-    }
-    else if (anim_counter &gt;= 48)
-    {
-        image_index = 1
-    }
-    else
-    {
-        image_index = 0
-    }
-}
-
-//keep her in the room
-x = clamp(x, 0, room_width);
-y = clamp(y, 0, room_height);
 </string>
           </argument>
         </arguments>
@@ -320,6 +486,13 @@ y = clamp(y, 0, room_height);
             <kind>1</kind>
             <string>depth = -y - 24
 draw_sprite_ext(sprite_index, image_index, floor(x + 0.5), floor(y + 0.5), image_xscale, image_yscale, image_angle, image_blend, image_alpha)
+if (text_timer &gt; 0)
+{
+    draw_set_color(c_black)
+    draw_text(tx + 2, ty + 2, active_text)
+    draw_set_color(c_white)
+    draw_text(tx, ty, active_text)
+}
 </string>
           </argument>
         </arguments>
@@ -350,12 +523,9 @@ for (var i = 0; i &lt; alength; i++;)
 {
     for (var j = 0; j &lt; global.inventory[i]; j++;)
     {
-        if (i == 0)
-        {
-            global.listOfSprites[global.numSpritesToRemove] = instance_create(x + lengthdir_x(62, angle), y + lengthdir_y(62, angle), inv_pearl)
-        }
-        global.numSpritesToRemove+=1
-        angle-=20
+        global.listOfSprites[global.numSpritesToRemove] = instance_create(floor(x - 24 + lengthdir_x(75, angle) + 0.5), floor(y + 32 + lengthdir_y(75, angle) + 0.5), script_execute(index_to_inv_item, i))
+        global.numSpritesToRemove ++
+        angle -= 20
     }
 }
 </string>

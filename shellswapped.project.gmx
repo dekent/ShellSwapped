@@ -28,6 +28,9 @@
     <sprite>sprites\armando_transition</sprite>
     <sprite>sprites\wave_in</sprite>
     <sprite>sprites\wave_out</sprite>
+    <sprite>sprites\clawdette_retract</sprite>
+    <sprite>sprites\clawdette_extract</sprite>
+    <sprite>sprites\clawdette_shell</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -40,7 +43,12 @@
     <script>scripts\item_to_index.gml</script>
     <script>scripts\scr_inv_rm_item.gml</script>
     <script>scripts\clearInvSprites.gml</script>
+    <script>scripts\index_to_item.gml</script>
+    <script>scripts\index_to_inv_item.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\font0</font>
+  </fonts>
   <objects name="objects">
     <object>objects\clawdette</object>
     <object>objects\clawson</object>
@@ -50,7 +58,7 @@
     <object>objects\armando</object>
     <object>objects\inv</object>
     <object>objects\inv_pearl</object>
-    <object>objects\inv_pebbles</object>
+    <object>objects\inv_pebble</object>
     <object>objects\inv_seaweed</object>
     <object>objects\inv_penny</object>
     <object>objects\pushable</object>
