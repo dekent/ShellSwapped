@@ -265,6 +265,7 @@ switch (mode)
         if (keyboard_check_pressed(ord('C')))
         {
             active_text = choose("hi", "hi.", "hey", "hey.")
+            audio_play_sound(snd_talk, 100, false)
             text_timer = 10
             var d = random_range(50, 60)
             var angle = random_range(pi, 2*pi)
@@ -279,6 +280,7 @@ switch (mode)
         if (keyboard_check_pressed(ord('X')))
         {
             active_text = choose("trade?", "trade??", "deal?", "trade")
+            audio_play_sound(snd_trade, 100, false)
             text_timer = 10
             var d = random_range(70, 80)
             var angle = random_range(3.14, 6.28)
@@ -295,9 +297,13 @@ switch (mode)
         {
             image_speed = 0.333
             sprite_index = clawdette_walk
+            if (!audio_is_playing(snd_walk)){
+                audio_play_sound(snd_walk, 1, true)
+                }
         }
         else
         {
+            audio_stop_sound(snd_walk)
             x = floor(x+0.5)
             y = floor(y+0.5)
             anim_counter = (anim_counter + 1) % anim_max
@@ -329,6 +335,10 @@ switch (mode)
         // retracting
         
         anim_counter ++
+        if (anim_counter == anim_max-30)
+        {
+            audio_play_sound(snd_pop, 100, false);
+        }
         if (anim_counter &lt;= 33)
         {
             if (anim_counter % 3 == 0)
@@ -379,6 +389,7 @@ switch (mode)
             anim_max = 24
             exit
         }
+        
         
         // inventory control
         if (ds_list_size(global.inv_sprites) &gt; 0)
