@@ -4,7 +4,13 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\snd_pop</sound>
+    <sound>sound\snd_walk</sound>
+    <sound>sound\snd_grab</sound>
+    <sound>sound\snd_trade</sound>
+    <sound>sound\snd_talk</sound>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\clawdette_idle</sprite>
     <sprite>sprites\clawdette_walk</sprite>
@@ -85,7 +91,6 @@
     <object>objects\stud</object>
     <object>objects\wave</object>
   </objects>
-  <timelines name="timelines"/>
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
