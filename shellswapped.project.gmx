@@ -55,6 +55,8 @@
     <script>scripts\deselect_item.gml</script>
     <script>scripts\create_inv_sprites.gml</script>
     <script>scripts\highlight_pickable_object.gml</script>
+    <script>scripts\choose_from_array.gml</script>
+    <script>scripts\choose_from_array_2d.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
@@ -85,7 +87,6 @@
     <object>objects\stud</object>
     <object>objects\wave</object>
   </objects>
-  <timelines name="timelines"/>
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>

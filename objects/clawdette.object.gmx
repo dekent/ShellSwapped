@@ -42,6 +42,7 @@ text_timer = 0
 active_text = ""
 tx = x
 ty = y
+text_color = make_colour_rgb(253, 193, 191)
 
 selected_item = 0
 </string>
@@ -524,9 +525,9 @@ draw_sprite_ext(sprite_index, image_index, floor(x + 0.5), floor(y + 0.5), image
 if (text_timer &gt; 0)
 {
     draw_set_color(c_black)
-    draw_text(tx + 2, ty + 2, active_text)
-    draw_set_color(c_white)
-    draw_text(tx, ty, active_text)
+    draw_text(floor(tx + 2.5), floor(ty + 2.5), active_text)
+    draw_set_color(text_color)
+    draw_text(floor(tx + 0.5), floor(ty + 0.5), active_text)
 }
 </string>
           </argument>
