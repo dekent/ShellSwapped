@@ -15,11 +15,16 @@
     <sprite>sprites\icon_pebbles</sprite>
     <sprite>sprites\icon_seaweed</sprite>
     <sprite>sprites\icon_penny</sprite>
+    <sprite>sprites\icon_stud</sprite>
     <sprite>sprites\pearl_sprite</sprite>
     <sprite>sprites\pebble_sprite</sprite>
     <sprite>sprites\seaweed_sprite</sprite>
     <sprite>sprites\penny_sprite</sprite>
+    <sprite>sprites\stud_sprite</sprite>
     <sprite>sprites\quarter_sprite</sprite>
+    <sprite>sprites\rock1_sprite</sprite>
+    <sprite>sprites\rock2_sprite</sprite>
+    <sprite>sprites\driftwood_sprite</sprite>
     <sprite>sprites\oyster_closed_idle</sprite>
     <sprite>sprites\oyster_open_idle</sprite>
     <sprite>sprites\oyster_transition</sprite>
@@ -31,6 +36,7 @@
     <sprite>sprites\clawdette_retract</sprite>
     <sprite>sprites\clawdette_extract</sprite>
     <sprite>sprites\clawdette_shell</sprite>
+    <sprite>sprites\icon_col</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -41,10 +47,14 @@
     <script>scripts\distance_from_player.gml</script>
     <script>scripts\distance.gml</script>
     <script>scripts\item_to_index.gml</script>
+    <script>scripts\inv_item_to_index.gml</script>
     <script>scripts\scr_inv_rm_item.gml</script>
     <script>scripts\clearInvSprites.gml</script>
     <script>scripts\index_to_item.gml</script>
     <script>scripts\index_to_inv_item.gml</script>
+    <script>scripts\deselect_item.gml</script>
+    <script>scripts\create_inv_sprites.gml</script>
+    <script>scripts\highlight_pickable_object.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
@@ -61,15 +71,21 @@
     <object>objects\inv_pebble</object>
     <object>objects\inv_seaweed</object>
     <object>objects\inv_penny</object>
+    <object>objects\inv_stud</object>
     <object>objects\pushable</object>
     <object>objects\quarter</object>
+    <object>objects\rock1</object>
+    <object>objects\rock2</object>
+    <object>objects\driftwood</object>
     <object>objects\pickable</object>
     <object>objects\penny</object>
     <object>objects\pearl</object>
     <object>objects\pebble</object>
     <object>objects\seaweed</object>
+    <object>objects\stud</object>
     <object>objects\wave</object>
   </objects>
+  <timelines name="timelines"/>
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>

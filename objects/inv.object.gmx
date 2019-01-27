@@ -3,10 +3,10 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-10000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <maskName>icon_col</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -26,7 +26,68 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0
-depth = -1000
+counter = 0
+amplitude = 3
+angle = 0
+extra_radius_target = 0
+extra_radius = 0
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>counter = (counter + pi/32) % (2*pi)
+
+error = extra_radius_target - extra_radius
+
+if (abs(error) &gt; 0 &amp;&amp; abs(error) &lt; 0.5)
+{
+    extra_radius = extra_radius_target
+}
+else if (abs(error) &gt; 0)
+{
+    extra_radius += 0.25*error
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_sprite(sprite_index, -1, x + lengthdir_x(extra_radius, angle), floor(y + lengthdir_y(extra_radius, angle) + amplitude*sin(counter) + 0.5))
 </string>
           </argument>
         </arguments>

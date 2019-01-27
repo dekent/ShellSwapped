@@ -114,7 +114,6 @@ if (dst &lt; trade_radius &amp;&amp; keyboard_check_pressed(ord('X')))
             instance_destroy(trade_items[i])
         }
         
-        draw_text(cx, cy+200, trade_items[0])
         var new_item = instance_create(-100, -100, trades[current_trade])
         // find a free x, y position
         var placed = false

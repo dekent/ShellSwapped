@@ -34,6 +34,7 @@ anim_max_walk = 12
 walking = false
 
 pick_object = noone
+pick_threshold = 100
 
 moved = false
 
@@ -41,6 +42,8 @@ text_timer = 0
 active_text = ""
 tx = x
 ty = y
+
+selected_item = 0
 </string>
           </argument>
         </arguments>
@@ -248,46 +251,7 @@ switch (mode)
         }
         
         //determine if there's a pickable object nearby and highlight it
-        if (pick_object != noone)
-        {
-            if (instance_exists(pick_object))
-            {
-                pick_object.image_index = 0
-            }
-            else
-            {
-                pick_object = noone
-            }
-        }
-        pick_object = noone
-        pick_threshold = 100
-        min_dst = pick_threshold
-        for (i = 0; i &lt; instance_number(pickable); i ++)
-        {
-            //check for the closest object that's also in range, then highlight it
-            temp_pick_object = instance_find(pickable, i)
-            dst = script_execute(distance_from_player, temp_pick_object.x, temp_pick_object.y)
-            if (dst &lt; min_dst)
-            {
-                pick_object = temp_pick_object
-                min_dst = dst
-            }
-        }
-        if (pick_object != noone)
-        {
-            pick_object.image_index = 1
-            
-            //todo: check for pickup button press
-            if (keyboard_check_pressed(ord('Z')))
-            {
-                scr_inv_gain_item(pick_object.object_index)
-                instance_destroy(pick_object.id)
-                pick_object = noone
-            }
-        }
-        
-        //object options: "pearl", "pebble", "seaweed", "penny"
-        
+        highlight_pickable_object()
         
         //text updates
         if (text_timer &gt; 0)
@@ -373,18 +337,20 @@ switch (mode)
         }
         else if (anim_counter == anim_max)
         {
-            // display inventory
-            var angle = 180
-            var sprite_count = 0
-            for (var i = 0; i &lt; array_length_1d(global.inventory); i++)
+            // cancel case
+            if (!keyboard_check(vk_space))
             {
-                for (var j = 0; j &lt; global.inventory[i]; j++)
-                {
-                    global.inv_sprites[sprite_count] = instance_create(floor(x - image_xscale*24 + lengthdir_x(80, angle) + 0.5), floor(y + 32 + lengthdir_y(80, angle) + 0.5), script_execute(index_to_inv_item, i))
-                    angle -= 20
-                    sprite_count ++
-                }
+                // switch to extracting
+                mode = 3
+                sprite_index = clawdette_extract
+                image_index = 0
+                anim_counter = 0
+                anim_max = 24
+                exit
             }
+        
+            // display inventory
+            create_inv_sprites()
             
             // switch to in shell
             mode = 2
@@ -394,7 +360,6 @@ switch (mode)
             anim_max = 57
             exit
         }
-    
     break
     case 2:
         // in shell
@@ -415,7 +380,81 @@ switch (mode)
         }
         
         // inventory control
-        
+        if (ds_list_size(global.inv_sprites) &gt; 0)
+        {
+            if (keyboard_check_pressed(ord('Z')))
+            {
+                // remove the item from the inventory and re-create the inventory sprites
+                var obj = global.inv_sprites[| selected_item].obj
+                scr_inv_rm_item(obj)
+                if (selected_item == ds_list_size(global.inv_sprites) - 1)
+                {
+                    selected_item --
+                    if (selected_item &lt; 0)
+                    {
+                        selected_item = 0
+                    }
+                }
+                clearInvSprites()
+                create_inv_sprites()
+                
+                // add the item to the world
+                var new_item = instance_create(-100, -100, obj)
+                // find a free x, y position
+                var placed = false
+                var drop_radius_min = 10
+                var drop_radius_max = 50
+                var attempts = 0
+                while (!placed)
+                {
+                    attempts ++
+                    if (attempts % 50 == 0)
+                    {
+                        drop_radius_min += 10
+                        drop_radius_max += 10
+                    }
+                    // todo: switch this to random angle and random distance
+                    var dst = irandom_range(drop_radius_min, drop_radius_max)
+                    var ang = random_range(0, 2*pi)
+                    var newx = floor(dst*cos(ang) + 0.5)
+                    var newy = floor(dst*sin(ang) + 0.5)
+                    newx = x + newx
+                    newy = y + 24 + newy
+                    with (new_item)
+                    {
+                        if (place_empty(newx, newy))
+                        {
+                            x = newx
+                            y = newy
+                            placed = true
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (keyboard_check_pressed(vk_right))
+                {
+                    deselect_item(selected_item)
+                    selected_item = (selected_item + 1) % ds_list_size(global.inv_sprites)
+                }
+                if (keyboard_check_pressed(vk_left))
+                {
+                    deselect_item(selected_item)
+                    if (selected_item == 0)
+                    {
+                        selected_item = ds_list_size(global.inv_sprites) - 1
+                    }
+                    else
+                    {
+                        selected_item --
+                    }
+                }
+            }
+            global.inv_sprites[| selected_item].image_index = 1
+            global.inv_sprites[| selected_item].depth = -10001
+            global.inv_sprites[| selected_item].extra_radius_target = 20
+        }
         
         // animation
         anim_counter = (anim_counter + 1) % anim_max
@@ -488,40 +527,6 @@ if (text_timer &gt; 0)
     draw_text(tx + 2, ty + 2, active_text)
     draw_set_color(c_white)
     draw_text(tx, ty, active_text)
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="73">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//pearl, pebble, seaweed, penny
-var angle = 180
-var sprite_count = 0
-for (var i = 0; i &lt; array_length_1d(global.inventory); i++)
-{
-    for (var j = 0; j &lt; global.inventory[i]; j++)
-    {
-        global.inv_sprites[sprite_count] = instance_create(floor(x - 24 + lengthdir_x(75, angle) + 0.5), floor(y + 32 + lengthdir_y(75, angle) + 0.5), script_execute(index_to_inv_item, i))
-        angle -= 20
-        sprite_count ++
-    }
 }
 </string>
           </argument>

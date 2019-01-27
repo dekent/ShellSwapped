@@ -1,5 +1,5 @@
-for (var i = array_length_1d(global.inv_sprites) - 1; i >= 0; i--)
+for (var i = ds_list_size(global.inv_sprites) - 1; i >= 0; i--)
 {
-    instance_destroy(global.inv_sprites[i])
+    instance_destroy(global.inv_sprites[| i])
 }
-global.inv_sprites = 0
+ds_list_clear(global.inv_sprites)

@@ -16,7 +16,7 @@ draw_set_halign(fa_center)
 draw_set_valign(fa_bottom)
 
 global.inventory = array_create(10)
-global.inv_sprites = 0
+global.inv_sprites = ds_list_create()
 
 scr_inv_gain_item(pearl)
 scr_inv_gain_item(pebble)
@@ -84,6 +84,10 @@ scr_inv_gain_item(penny)</code>
     <instance objName="pebble" x="1483" y="1111" name="inst_BBE9510C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="seaweed" x="792" y="782" name="inst_2D52864F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="seaweed" x="968" y="725" name="inst_46C367CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="rock1" x="1335" y="1021" name="inst_2C886E61" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="rock2" x="1290" y="953" name="inst_90AC4C92" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="stud" x="827" y="1141" name="inst_ED1058D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="driftwood" x="1132" y="1416" name="inst_65883780" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
