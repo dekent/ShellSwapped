@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>anim_counter = 21
 anim_max = 24
+
+cx = x
+cy = y + 80
 </string>
           </argument>
         </arguments>
@@ -96,7 +99,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>depth = -y - 40
+            <string>depth = -cy
 draw_self()
 </string>
           </argument>

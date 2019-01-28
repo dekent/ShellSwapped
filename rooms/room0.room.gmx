@@ -2,7 +2,7 @@
 <room>
   <caption></caption>
   <width>3008</width>
-  <height>2512</height>
+  <height>2000</height>
   <vsnap>1</vsnap>
   <hsnap>1</hsnap>
   <isometric>0</isometric>
@@ -67,25 +67,33 @@ global.trade_count = 0</code>
     <instance objName="wave" x="1152" y="384" name="inst_5C1DD79D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="wave" x="384" y="384" name="inst_33BE37A6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="clawson" x="381" y="1087" name="inst_A36BEA8D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="emolie" x="234" y="1469" name="inst_15EFE2BD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="emolie" x="1598" y="919" name="inst_15EFE2BD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="shelldon" x="834" y="1369" name="inst_11DDABAE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oyster" x="610" y="1574" name="inst_0FAD30D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="armando" x="1149" y="1135" name="inst_EAA2FD50" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="armando" x="1152" y="1053" name="inst_EAA2FD50" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="clawdette" x="553" y="1330" name="inst_FDCC1DC5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="quarter" x="148" y="959" name="inst_E745A9E4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="quarter" x="667" y="1011" name="inst_4D0A6003" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="penny" x="305" y="1201" name="inst_C945BB01" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="penny" x="739" y="1540" name="inst_F1B36363" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="penny" x="959" y="1502" name="inst_F1B36363" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="pearl" x="501" y="1154" name="inst_BE3F12D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="pebble" x="1383" y="1135" name="inst_E2350F9D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="pebble" x="1421" y="1173" name="inst_50A75EAE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="pebble" x="1483" y="1111" name="inst_BBE9510C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="pebble" x="2287" y="862" name="inst_E2350F9D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="pebble" x="1672" y="1136" name="inst_50A75EAE" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="pebble" x="1648" y="1096" name="inst_BBE9510C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="seaweed" x="792" y="782" name="inst_2D52864F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="seaweed" x="968" y="725" name="inst_46C367CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="rock1" x="1335" y="1021" name="inst_2C886E61" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="rock2" x="1290" y="953" name="inst_90AC4C92" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="rock1" x="1475" y="881" name="inst_2C886E61" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="rock2" x="1949" y="1129" name="inst_90AC4C92" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="stud" x="827" y="1141" name="inst_ED1058D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="driftwood" x="1132" y="1416" name="inst_65883780" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="big_rock4" x="1949" y="863" name="inst_28DFED15" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="big_rock3" x="2120" y="1092" name="inst_9B788F03" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="big_rock2" x="1637" y="983" name="inst_242CD421" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="big_rock1" x="1789" y="936" name="inst_55FE581F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="big_rock2" x="2308" y="939" name="inst_0C9417F5" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="big_rock1" x="2375" y="897" name="inst_483932A6" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="pebble" x="1904" y="1031" name="inst_A93D97A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="pebble" x="2211" y="1170" name="inst_25B9C158" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

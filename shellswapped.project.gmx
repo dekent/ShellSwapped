@@ -45,6 +45,10 @@
     <sprite>sprites\icon_col</sprite>
     <sprite>sprites\spiral_shell_sprite</sprite>
     <sprite>sprites\conch_shell_sprite</sprite>
+    <sprite>sprites\big_rock1_sprite</sprite>
+    <sprite>sprites\big_rock2_sprite</sprite>
+    <sprite>sprites\big_rock3_sprite</sprite>
+    <sprite>sprites\big_rock4_sprite</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -96,6 +100,11 @@
     <object>objects\spiral_shell</object>
     <object>objects\conch_shell</object>
     <object>objects\wave</object>
+    <object>objects\scenery</object>
+    <object>objects\big_rock1</object>
+    <object>objects\big_rock2</object>
+    <object>objects\big_rock3</object>
+    <object>objects\big_rock4</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
