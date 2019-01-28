@@ -43,6 +43,8 @@
     <sprite>sprites\clawdette_extract</sprite>
     <sprite>sprites\clawdette_shell</sprite>
     <sprite>sprites\icon_col</sprite>
+    <sprite>sprites\spiral_shell_sprite</sprite>
+    <sprite>sprites\conch_shell_sprite</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -91,6 +93,8 @@
     <object>objects\pebble</object>
     <object>objects\seaweed</object>
     <object>objects\stud</object>
+    <object>objects\spiral_shell</object>
+    <object>objects\conch_shell</object>
     <object>objects\wave</object>
   </objects>
   <rooms name="rooms">

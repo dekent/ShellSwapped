@@ -18,12 +18,10 @@ draw_set_valign(fa_bottom)
 global.inventory = array_create(10)
 global.inv_sprites = ds_list_create()
 
-scr_inv_gain_item(pearl)
-scr_inv_gain_item(pebble)
-scr_inv_gain_item(pearl)
-scr_inv_gain_item(seaweed)
-scr_inv_gain_item(penny)
-scr_inv_gain_item(penny)</code>
+global.traders_list = 0
+global.trade_given_list = 0
+global.trade_received_list = 0
+global.trade_count = 0</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>0</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

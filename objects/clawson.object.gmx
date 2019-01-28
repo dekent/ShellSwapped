@@ -169,8 +169,12 @@ if (dst &lt; trade_radius &amp;&amp; keyboard_check_pressed(ord('X')))
         {
             for (var i = array_length_1d(trade_items) - 1; i &gt;= 0; i --)
             {
+                global.trade_given_list[global.trade_count, i] = trade_items[i].object_index
                 instance_destroy(trade_items[i])
             }
+            
+            global.trade_received_list[global.trade_count] = trades[current_trade]
+            global.traders_list[global.trade_count] = object_index
             
             var new_item = instance_create(-100, -100, trades[current_trade])
             // find a free x, y position
@@ -197,13 +201,14 @@ if (dst &lt; trade_radius &amp;&amp; keyboard_check_pressed(ord('X')))
                     }
                 }
             }
-            
+
             active_text = choose_from_array_2d(trade_accept, current_trade)
             text_timer = 40
             tx = x + 8
             ty = y - 40
             
             current_trade ++
+            global.trade_count ++
             chat_index = 0
         }
         else
