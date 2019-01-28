@@ -29,7 +29,7 @@ if (pick_object != noone)
     //todo: check for pickup button press
     if (keyboard_check_pressed(ord('Z')))
     {
-        audio_play_sound(snd_grab, 100, false)
+        play_pick_sound(pick_object.object_index)
         scr_inv_gain_item(pick_object.object_index)
         instance_destroy(pick_object.id)
         pick_object = noone

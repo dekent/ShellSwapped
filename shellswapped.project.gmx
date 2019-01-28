@@ -5,11 +5,14 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound">
+    <sound>sound\snd_talk</sound>
     <sound>sound\snd_pop</sound>
     <sound>sound\snd_walk</sound>
     <sound>sound\snd_grab</sound>
     <sound>sound\snd_trade</sound>
-    <sound>sound\snd_talk</sound>
+    <sound>sound\snd_seaweed</sound>
+    <sound>sound\snd_wave</sound>
+    <sound>sound\snd_pick_penny</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\clawdette_idle</sprite>
@@ -61,6 +64,8 @@
     <script>scripts\deselect_item.gml</script>
     <script>scripts\create_inv_sprites.gml</script>
     <script>scripts\highlight_pickable_object.gml</script>
+    <script>scripts\play_drop_sound.gml</script>
+    <script>scripts\play_pick_sound.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
