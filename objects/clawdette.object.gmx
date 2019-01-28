@@ -265,7 +265,9 @@ switch (mode)
         if (keyboard_check_pressed(ord('C')))
         {
             active_text = choose("hi", "hi.", "hey", "hey.")
-            audio_play_sound(snd_talk, 100, false)
+            var talk_sound = snd_talk
+            audio_sound_pitch(talk_sound, random_range(0.95, 1.1))
+            audio_play_sound(talk_sound, 100, false)
             text_timer = 10
             var d = random_range(50, 60)
             var angle = random_range(pi, 2*pi)
@@ -280,7 +282,9 @@ switch (mode)
         if (keyboard_check_pressed(ord('X')))
         {
             active_text = choose("trade?", "trade??", "deal?", "trade")
-            audio_play_sound(snd_trade, 100, false)
+            var trade_sound = snd_trade
+            audio_sound_pitch(trade_sound, random_range(0.95, 1.1))
+            audio_play_sound(trade_sound, 100, false)
             text_timer = 10
             var d = random_range(70, 80)
             var angle = random_range(3.14, 6.28)
