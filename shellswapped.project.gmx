@@ -13,6 +13,7 @@
     <sound>sound\snd_seaweed</sound>
     <sound>sound\snd_wave</sound>
     <sound>sound\snd_pick_penny</sound>
+    <sound>sound\snd_fish</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\clawdette_idle</sprite>

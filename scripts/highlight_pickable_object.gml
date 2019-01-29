@@ -25,7 +25,9 @@ for (i = 0; i < instance_number(pickable); i ++)
 if (pick_object != noone)
 {
     pick_object.image_index = 1
-    
+    if (!audio_is_playing(snd_fish) and pick_object.object_index == live_fish){
+        audio_play_sound(snd_fish, 100, true);
+    }
     //todo: check for pickup button press
     if (keyboard_check_pressed(ord('Z')))
     {
@@ -34,4 +36,7 @@ if (pick_object != noone)
         instance_destroy(pick_object.id)
         pick_object = noone
     }
+}
+else{
+    audio_stop_sound(snd_fish)
 }
