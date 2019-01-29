@@ -50,7 +50,23 @@ anim_max = 42
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>anim_counter = (anim_counter + 1) % anim_max
+            <string>var dst = 0
+var player = instance_find(clawdette, 0)
+with (player)
+{
+    dst = distance_from_player(other.x, other.y)
+}
+
+if (!audio_is_playing(snd_fish) &amp;&amp; dst &lt; 350)
+{
+    var volume = 1 - dst/350.0
+    var fish_sound = snd_fish
+    audio_sound_gain(fish_sound, volume, 0)
+    audio_sound_pitch(fish_sound, random_range(0.95, 1.05))
+    audio_play_sound(fish_sound, 100, false)
+}
+
+anim_counter = (anim_counter + 1) % anim_max
 
 switch (anim_counter)
 {

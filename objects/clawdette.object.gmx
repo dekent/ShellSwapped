@@ -265,8 +265,17 @@ switch (mode)
         if (keyboard_check_pressed(ord('C')))
         {
             active_text = choose("hi", "hi.", "hey", "hey.")
+            if (audio_is_playing(snd_trade))
+            {
+                audio_stop_sound(snd_trade)
+            }
+            if (audio_is_playing(snd_talk))
+            {
+                audio_stop_sound(snd_talk)
+            }
             var talk_sound = snd_talk
-            audio_sound_pitch(talk_sound, random_range(0.95, 1.1))
+            audio_sound_pitch(talk_sound, random_range(1.0, 1.1))
+            audio_sound_gain(talk_sound, random_range(0.9, 1.0), 0)
             audio_play_sound(talk_sound, 100, false)
             text_timer = 10
             var d = random_range(50, 60)
@@ -282,8 +291,17 @@ switch (mode)
         if (keyboard_check_pressed(ord('X')))
         {
             active_text = choose("trade?", "trade??", "deal?", "trade")
+            if (audio_is_playing(snd_trade))
+            {
+                audio_stop_sound(snd_trade)
+            }
+            if (audio_is_playing(snd_talk))
+            {
+                audio_stop_sound(snd_talk)
+            }
             var trade_sound = snd_trade
-            audio_sound_pitch(trade_sound, random_range(0.95, 1.1))
+            audio_sound_pitch(trade_sound, random_range(1.0, 1.1))
+            audio_sound_gain(trade_sound, random_range(0.9, 1.0), 0)
             audio_play_sound(trade_sound, 100, false)
             text_timer = 10
             var d = random_range(70, 80)
