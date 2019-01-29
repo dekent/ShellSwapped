@@ -25,6 +25,11 @@
     <sprite>sprites\icon_seaweed</sprite>
     <sprite>sprites\icon_penny</sprite>
     <sprite>sprites\icon_stud</sprite>
+    <sprite>sprites\icon_live_fish1</sprite>
+    <sprite>sprites\icon_live_fish2</sprite>
+    <sprite>sprites\icon_live_fish3</sprite>
+    <sprite>sprites\icon_live_fish4</sprite>
+    <sprite>sprites\icon_dead_fish</sprite>
     <sprite>sprites\pearl_sprite</sprite>
     <sprite>sprites\pebble_sprite</sprite>
     <sprite>sprites\seaweed_sprite</sprite>
@@ -56,6 +61,7 @@
     <sprite>sprites\live_fish2</sprite>
     <sprite>sprites\live_fish3</sprite>
     <sprite>sprites\live_fish4</sprite>
+    <sprite>sprites\dead_fish_sprite</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -95,6 +101,8 @@
     <object>objects\inv_seaweed</object>
     <object>objects\inv_penny</object>
     <object>objects\inv_stud</object>
+    <object>objects\inv_live_fish</object>
+    <object>objects\inv_dead_fish</object>
     <object>objects\pushable</object>
     <object>objects\quarter</object>
     <object>objects\rock1</object>
@@ -107,6 +115,7 @@
     <object>objects\seaweed</object>
     <object>objects\stud</object>
     <object>objects\live_fish</object>
+    <object>objects\dead_fish</object>
     <object>objects\spiral_shell</object>
     <object>objects\conch_shell</object>
     <object>objects\wave</object>
