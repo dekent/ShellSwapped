@@ -337,7 +337,7 @@ switch (mode)
     break
     case 1:
         // retracting
-        
+        audio_stop_sound(snd_walk)
         anim_counter ++
         if (anim_counter == anim_max-30)
         {
@@ -403,6 +403,7 @@ switch (mode)
                 // remove the item from the inventory and re-create the inventory sprites
                 var obj = global.inv_sprites[| selected_item].obj
                 scr_inv_rm_item(obj)
+                play_drop_sound(obj)
                 if (selected_item == ds_list_size(global.inv_sprites) - 1)
                 {
                     selected_item --
