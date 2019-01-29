@@ -10,6 +10,9 @@
     <sound>sound\snd_grab</sound>
     <sound>sound\snd_trade</sound>
     <sound>sound\snd_talk</sound>
+    <sound>sound\snd_seaweed</sound>
+    <sound>sound\snd_wave</sound>
+    <sound>sound\snd_pick_penny</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\clawdette_idle</sprite>
@@ -73,6 +76,8 @@
     <script>scripts\highlight_pickable_object.gml</script>
     <script>scripts\choose_from_array.gml</script>
     <script>scripts\choose_from_array_2d.gml</script>
+    <script>scripts\play_drop_sound.gml</script>
+    <script>scripts\play_pick_sound.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
