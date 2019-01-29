@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>event_inherited()
 anim_counter = 0
-anim_max = 39
+anim_max = 42
 </string>
           </argument>
         </arguments>
@@ -57,25 +57,25 @@ switch (anim_counter)
     case 0:
         sprite_index = live_fish1
     break
-    case 15:
-        sprite_index = live_fish2
-    break
     case 18:
-        sprite_index = live_fish3
+        sprite_index = live_fish2
     break
     case 21:
-        sprite_index = live_fish4
-    break
-    case 24:
-        sprite_index = live_fish1
-    break
-    case 30:
-        sprite_index = live_fish2
-    break
-    case 33:
         sprite_index = live_fish3
     break
+    case 24:
+        sprite_index = live_fish4
+    break
+    case 27:
+        sprite_index = live_fish1
+    break
+    case 33:
+        sprite_index = live_fish2
+    break
     case 36:
+        sprite_index = live_fish3
+    break
+    case 39:
         sprite_index = live_fish4
     break
 }
