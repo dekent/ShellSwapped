@@ -15,7 +15,7 @@ draw_set_font(font0)
 draw_set_halign(fa_center)
 draw_set_valign(fa_bottom)
 
-global.inventory = array_create(10)
+global.inventory = array_create(20)
 global.inv_sprites = ds_list_create()
 
 global.traders_list = 0
@@ -95,6 +95,7 @@ global.trade_count = 0</code>
     <instance objName="pebble" x="1904" y="1031" name="inst_A93D97A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="pebble" x="2211" y="1170" name="inst_25B9C158" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="live_fish" x="382" y="1430" name="inst_9AA7FFDD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="dead_fish" x="1244" y="1282" name="inst_513D2A7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

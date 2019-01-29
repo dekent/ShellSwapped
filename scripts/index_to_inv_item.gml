@@ -5,5 +5,6 @@ switch (argument0)
     case 2: return inv_pebble
     case 3: return inv_seaweed
     case 5: return inv_stud
-    //case 6: return inv_fish
+    case 9: return inv_live_fish
+    case 10: return inv_dead_fish
 }

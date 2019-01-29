@@ -10,4 +10,5 @@ switch (argument0)
     case 7: return rock2
     case 8: return driftwood
     case 9: return live_fish
+    case 10: return dead_fish
 }
