@@ -94,6 +94,7 @@ global.trade_count = 0</code>
     <instance objName="big_rock1" x="2375" y="897" name="inst_483932A6" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="pebble" x="1904" y="1031" name="inst_A93D97A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="pebble" x="2211" y="1170" name="inst_25B9C158" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="live_fish" x="382" y="1430" name="inst_9AA7FFDD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

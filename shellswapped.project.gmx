@@ -49,6 +49,10 @@
     <sprite>sprites\big_rock2_sprite</sprite>
     <sprite>sprites\big_rock3_sprite</sprite>
     <sprite>sprites\big_rock4_sprite</sprite>
+    <sprite>sprites\live_fish1</sprite>
+    <sprite>sprites\live_fish2</sprite>
+    <sprite>sprites\live_fish3</sprite>
+    <sprite>sprites\live_fish4</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -97,6 +101,7 @@
     <object>objects\pebble</object>
     <object>objects\seaweed</object>
     <object>objects\stud</object>
+    <object>objects\live_fish</object>
     <object>objects\spiral_shell</object>
     <object>objects\conch_shell</object>
     <object>objects\wave</object>
