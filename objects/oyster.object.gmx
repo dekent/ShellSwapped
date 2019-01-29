@@ -32,10 +32,66 @@ anim_max = 183
 
 cx = x
 cy = y + 64
+depth = -cy
 
 state = 0  // 0: closed idle,  1: opening,  2: open idle,  3: closing
 active_threshold = 200
 trade_radius = 150
+value[item_to_index(penny)] = 1
+value[item_to_index(pearl)] = 0
+value[item_to_index(pebble)] = 0
+value[item_to_index(seaweed)] = 0
+value[item_to_index(stud)] = 0
+value[item_to_index(live_fish)] = 0
+value[item_to_index(dead_fish)] = 0
+
+value[item_to_index(quarter)] = 0
+value[item_to_index(rock1)] = 0
+value[item_to_index(rock2)] = 0
+value[item_to_index(driftwood)] = 0
+
+current_trade = 0
+
+trade_amounts[0] = 1
+
+trades[0] = pebble
+trades[1] = quarter
+
+trade_accept[0, 0] = "Bloop."
+trade_accept[0, 1] = "Bloop."
+trade_accept[1, 0] = "Bloop."
+trade_accept[1, 1] = "Bloop."
+
+trade_reject[0, 0] = "Bloop."
+trade_reject[0, 1] = "Bloop."
+trade_reject[1, 0] = "Bloop."
+trade_reject[1, 1] = "Bloop."
+
+out_of_trades[0] = "Bloop."
+out_of_trades[1] = "Bloop."
+
+chat[0, 0] = "Bloop."
+chat[0, 1] = "Bloop."
+chat[1, 0] = "Bloop."
+chat[1, 1] = "Bloop."
+chat[2, 0] = "Bloop."
+chat[2, 1] = "Bloop."
+
+chat_loop_point[0] = 0
+chat_loop_point[1] = 0
+chat_loop_point[2] = 0
+
+chat_index = 0
+
+text_timer = 0
+active_text = ""
+tx = x
+ty = y
+tx_offset = 0
+ty_offset = 0
+ty_speed = 0.5
+text_time = 40
+text_color = make_colour_rgb(243, 134, 48)
 </string>
           </argument>
         </arguments>
@@ -58,8 +114,131 @@ trade_radius = 150
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>change_condition = false
-player = instance_find(clawdette, 0)
+            <string>//text updates
+if (text_timer &gt; 0)
+{
+    ty -= ty_speed
+    text_timer --
+}
+
+// trade stuff
+var player = instance_find(clawdette, 0)
+var dst = 0
+with (player)
+{
+    dst = script_execute(distance_from_player, other.cx, other.cy)
+}
+if (dst &lt; trade_radius &amp;&amp; keyboard_check_pressed(ord('X')))
+{
+    if (current_trade &gt;= array_length_1d(trades))
+    {
+        active_text = choose_from_array(out_of_trades)
+        text_timer = text_time
+        tx = x + tx_offset
+        ty = y + ty_offset
+    }
+    else
+    {
+        var sum = 0
+        var trade_item_count = 0
+        var trade_items = 0
+        for (i = 0; i &lt; instance_number(pushable); i += 1)
+        {
+            var item = instance_find(pushable, i);
+            with (item)
+            {
+                if (script_execute(distance, other.cx, other.cy) &lt; other.trade_radius)
+                {
+                    sum += other.value[script_execute(item_to_index, object_index)]
+                    trade_items[trade_item_count] = item
+                    trade_item_count ++
+                }
+            }
+        }
+        for (var i = 0; i &lt; instance_number(pickable); i += 1)
+        {
+            var item = instance_find(pickable, i);
+            with (item)
+            {
+                if (script_execute(distance, other.cx, other.cy) &lt; other.trade_radius)
+                {
+                    sum += other.value[script_execute(item_to_index, object_index)]
+                    trade_items[trade_item_count] = item
+                    trade_item_count ++
+                }
+            }
+        }
+        
+        if (sum &gt;= trade_amounts[current_trade])
+        {
+            for (var i = array_length_1d(trade_items) - 1; i &gt;= 0; i --)
+            {
+                global.trade_given_list[global.trade_count, i] = trade_items[i].object_index
+                instance_destroy(trade_items[i])
+            }
+            
+            global.trade_received_list[global.trade_count] = trades[current_trade]
+            global.traders_list[global.trade_count] = object_index
+            
+            var new_item = instance_create(-100, -100, trades[current_trade])
+            // find a free x, y position
+            var placed = false
+            while (!placed)
+            {
+                // todo: switch this to random angle and random distance
+                var newx = irandom(trade_radius*2) - trade_radius
+                var newy = irandom(trade_radius)
+                if (sqrt(sqr(newx) + sqr(newy)) &gt; trade_radius)
+                {
+                    continue
+                }
+                newx = cx + newx
+                newy = cy + newy
+                
+                with (new_item)
+                {
+                    if (place_empty(newx, newy))
+                    {
+                        x = newx
+                        y = newy
+                        placed = true
+                    }
+                }
+            }
+
+            active_text = choose_from_array_2d(trade_accept, current_trade)
+            text_timer = text_time
+            tx = x + tx_offset
+            ty = y + ty_offset
+            
+            current_trade ++
+            global.trade_count ++
+            chat_index = 0
+        }
+        else
+        {
+            active_text = choose_from_array_2d(trade_reject, current_trade)
+            text_timer = text_time
+            tx = x + tx_offset
+            ty = y + ty_offset
+        }
+    }
+}
+else if (dst &lt; trade_radius &amp;&amp; keyboard_check_pressed(ord('C')))
+{
+    active_text = chat[current_trade, chat_index]
+    text_timer = text_time
+    tx = x + tx_offset
+    ty = y + ty_offset
+    
+    chat_index ++
+    if (chat_index &gt;= array_length_2d(chat, current_trade))
+    {
+        chat_index = chat_loop_point[current_trade]
+    }
+}
+
+change_condition = false
 if (state == 0)  // check if we should open the shell
 {
     with (player)
@@ -215,8 +394,14 @@ else if (state == 3)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>depth = -y - 64
-draw_self()
+            <string>draw_self()
+if (text_timer &gt; 0)
+{
+    draw_set_color(c_black)
+    draw_text_ext(floor(tx + 2.5), floor(ty + 2.5), active_text, 24, 256)
+    draw_set_color(text_color)
+    draw_text_ext(floor(tx + 0.5), floor(ty + 0.5), active_text, 24, 256)
+}
 </string>
           </argument>
         </arguments>

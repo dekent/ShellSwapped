@@ -20,6 +20,7 @@
     <sprite>sprites\clawdette_walk</sprite>
     <sprite>sprites\clawson_idle</sprite>
     <sprite>sprites\emolie_idle</sprite>
+    <sprite>sprites\hermi_idle</sprite>
     <sprite>sprites\shelldon_idle</sprite>
     <sprite>sprites\icon_pearl</sprite>
     <sprite>sprites\icon_pebbles</sprite>
@@ -63,6 +64,8 @@
     <sprite>sprites\live_fish3</sprite>
     <sprite>sprites\live_fish4</sprite>
     <sprite>sprites\dead_fish_sprite</sprite>
+    <sprite>sprites\shell_pile1</sprite>
+    <sprite>sprites\shell_pile2</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -93,6 +96,7 @@
     <object>objects\clawdette</object>
     <object>objects\clawson</object>
     <object>objects\emolie</object>
+    <object>objects\hermi</object>
     <object>objects\shelldon</object>
     <object>objects\oyster</object>
     <object>objects\armando</object>
@@ -125,6 +129,7 @@
     <object>objects\big_rock2</object>
     <object>objects\big_rock3</object>
     <object>objects\big_rock4</object>
+    <object>objects\shell_pile</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

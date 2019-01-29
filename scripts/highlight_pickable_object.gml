@@ -31,8 +31,16 @@ if (pick_object != noone)
         if (pick_object.object_index == live_fish){
             audio_stop_sound(snd_fish)
         }
+        
+        if (pick_object.object_index == spiral_shell || pick_object.object_index == conch_shell)
+        {
+            //TODO: special case to end game
+        }
+        else
+        {
+            scr_inv_gain_item(pick_object.object_index)
+        }
         play_pick_sound(pick_object.object_index)
-        scr_inv_gain_item(pick_object.object_index)
         instance_destroy(pick_object.id)
         pick_object = noone
     }
