@@ -38,8 +38,10 @@ value[item_to_index(pearl)] = 0
 value[item_to_index(pebble)] = 0
 value[item_to_index(seaweed)] = 0
 value[item_to_index(stud)] = 0
-value[item_to_index(live_fish)] = 0
-value[item_to_index(dead_fish)] = 0
+value[item_to_index(live_fish)] = 2
+value[item_to_index(dead_fish)] = 1
+value[item_to_index(fish_bones)] = 0
+value[item_to_index(sponge)] = 0
 
 value[item_to_index(quarter)] = 0
 value[item_to_index(rock1)] = 0
@@ -48,34 +50,41 @@ value[item_to_index(driftwood)] = 0
 
 current_trade = 0
 
-trade_amounts[0] = 0
+trade_amounts[0] = 2
+trade_amounts[1] = 1
 
-trades[0] = pebble
-trades[1] = quarter
+trades[0] = stud
+trades[1] = fish_bones
 
-trade_accept[0, 0] = "Bloop."
-trade_accept[0, 1] = "Bloop."
-trade_accept[1, 0] = "Bloop."
-trade_accept[1, 1] = "Bloop."
+trade_accept[0, 0] = "Yum.  Here, this washed up earlier."
+trade_accept[0, 1] = "Tasty.  Here, this washed up earlier."
+trade_accept[1, 0] = "Solid."
+trade_accept[1, 1] = "That's my jam."
 
-trade_reject[0, 0] = "Bloop."
-trade_reject[0, 1] = "Bloop."
-trade_reject[1, 0] = "Bloop."
-trade_reject[1, 1] = "Bloop."
+trade_reject[0, 0] = "Nope."
+trade_reject[0, 1] = "Got anything... meatier?"
+trade_reject[1, 0] = "Nope."
+trade_reject[1, 1] = "I'm itchin for a fish here."
 
-out_of_trades[0] = "Bloop."
-out_of_trades[1] = "Bloop."
+out_of_trades[0] = "I'm good, thanks."
+out_of_trades[1] = "Chill, my friend."
 
-chat[0, 0] = "Bloop."
-chat[0, 1] = "Bloop."
-chat[1, 0] = "Bloop."
-chat[1, 1] = "Bloop."
-chat[2, 0] = "Bloop."
-chat[2, 1] = "Bloop."
+chat[0, 0] = "Sup."
+chat[0, 1] = "It's low tide."
+chat[0, 2] = "I'm hungry."
+chat[0, 3] = "Help an anemone out?"
+chat[0, 4] = "I like em squirming."
 
-chat_loop_point[0] = 0
-chat_loop_point[1] = 0
-chat_loop_point[2] = 0
+chat[1, 0] = "That was good."
+chat[1, 1] = "Still a bit hungry."
+chat[1, 2] = "Got anything else?"
+
+chat[2, 0] = "That hit the spot."
+chat[2, 1] = "Later, my soft-shelled friend."
+
+chat_loop_point[0] = 2
+chat_loop_point[1] = 1
+chat_loop_point[2] = 1
 
 chat_index = 0
 
@@ -84,10 +93,10 @@ active_text = ""
 tx = x
 ty = y
 tx_offset = 0
-ty_offset = 0
-ty_speed = 0.5
+ty_offset = -8
+ty_speed = 1.0
 text_time = 40
-text_color = make_colour_rgb(243, 134, 48)
+text_color = make_colour_rgb(192, 41, 66)
 </string>
           </argument>
         </arguments>

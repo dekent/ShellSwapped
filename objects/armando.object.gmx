@@ -47,16 +47,17 @@ value[item_to_index(live_fish)] = 0
 value[item_to_index(dead_fish)] = 0
 
 value[item_to_index(quarter)] = 0
-value[item_to_index(rock1)] = 0
-value[item_to_index(rock2)] = 0
+value[item_to_index(rock1)] = 1
+value[item_to_index(rock2)] = 1
 value[item_to_index(driftwood)] = 0
 
 current_trade = 0
 
-trade_amounts[0] = 0
+trade_amounts[0] = 1
+trade_amounts[1] = 1
 
-trades[0] = pebble
-trades[1] = quarter
+trades[0] = live_fish
+trades[1] = penny
 
 trade_accept[0, 0] = "Bloop."
 trade_accept[0, 1] = "Bloop."
@@ -88,10 +89,10 @@ text_timer = 0
 active_text = ""
 tx = x
 ty = y
-tx_offset = 0
-ty_offset = 0
+tx_offset = 8
+ty_offset = -72
 ty_speed = 0.5
-text_time = 40
+text_time = 80
 text_color = make_colour_rgb(243, 134, 48)
 </string>
           </argument>

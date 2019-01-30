@@ -38,14 +38,16 @@ state = 0  // 0: closed idle,  1: opening,  2: open idle,  3: closing
 active_threshold = 200
 trade_radius = 150
 value[item_to_index(penny)] = 1
-value[item_to_index(pearl)] = 0
+value[item_to_index(pearl)] = 1
 value[item_to_index(pebble)] = 0
 value[item_to_index(seaweed)] = 0
-value[item_to_index(stud)] = 0
+value[item_to_index(stud)] = 1
 value[item_to_index(live_fish)] = 0
 value[item_to_index(dead_fish)] = 0
+value[item_to_index(fish_bones)] = 0
+value[item_to_index(sponge)] = 1
 
-value[item_to_index(quarter)] = 0
+value[item_to_index(quarter)] = 1
 value[item_to_index(rock1)] = 0
 value[item_to_index(rock2)] = 0
 value[item_to_index(driftwood)] = 0
@@ -54,18 +56,28 @@ current_trade = 0
 
 trade_amounts[0] = 1
 
-trades[0] = pebble
-trades[1] = quarter
+trades[0] = pearl
+trades[1] = pearl
+trades[2] = pearl
+trades[3] = pearl
 
 trade_accept[0, 0] = "Bloop."
 trade_accept[0, 1] = "Bloop."
 trade_accept[1, 0] = "Bloop."
 trade_accept[1, 1] = "Bloop."
+trade_accept[2, 0] = "Bloop."
+trade_accept[2, 1] = "Bloop."
+trade_accept[3, 0] = "Bloop."
+trade_accept[3, 1] = "Bloop."
 
 trade_reject[0, 0] = "Bloop."
 trade_reject[0, 1] = "Bloop."
 trade_reject[1, 0] = "Bloop."
 trade_reject[1, 1] = "Bloop."
+trade_reject[2, 0] = "Bloop."
+trade_reject[2, 1] = "Bloop."
+trade_reject[3, 0] = "Bloop."
+trade_reject[3, 1] = "Bloop."
 
 out_of_trades[0] = "Bloop."
 out_of_trades[1] = "Bloop."
@@ -76,10 +88,16 @@ chat[1, 0] = "Bloop."
 chat[1, 1] = "Bloop."
 chat[2, 0] = "Bloop."
 chat[2, 1] = "Bloop."
+chat[3, 0] = "Bloop."
+chat[3, 1] = "Bloop."
+chat[4, 0] = "Bloop."
+chat[4, 1] = "Bloop."
 
 chat_loop_point[0] = 0
 chat_loop_point[1] = 0
 chat_loop_point[2] = 0
+chat_loop_point[3] = 0
+chat_loop_point[4] = 0
 
 chat_index = 0
 
@@ -88,10 +106,10 @@ active_text = ""
 tx = x
 ty = y
 tx_offset = 0
-ty_offset = 0
+ty_offset = -60
 ty_speed = 0.5
-text_time = 40
-text_color = make_colour_rgb(243, 134, 48)
+text_time = 80
+text_color = make_colour_rgb(167, 219, 216)
 </string>
           </argument>
         </arguments>

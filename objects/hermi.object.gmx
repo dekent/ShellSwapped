@@ -40,6 +40,8 @@ value[item_to_index(seaweed)] = 0
 value[item_to_index(stud)] = 5
 value[item_to_index(live_fish)] = 2
 value[item_to_index(dead_fish)] = 2
+value[item_to_index(fish_bones)] = 1
+value[item_to_index(sponge)] = 4
 
 value[item_to_index(quarter)] = 5
 value[item_to_index(rock1)] = 0
@@ -51,14 +53,16 @@ current_trade = 0
 trade_amounts[0] = 2
 trade_amounts[1] = 5
 trade_amounts[2] = 3
-trade_amounts[3] = 3
-trade_amounts[4] = 1
+trade_amounts[3] = 4
+trade_amounts[4] = 2
+trade_amounts[5] = 1
 
 trades[0] = seaweed
 trades[1] = rock1
 trades[2] = pebble
 trades[3] = driftwood
-trades[4] = conch_shell
+trades[4] = fish_bones
+trades[5] = conch_shell
 
 trade_accept[0, 0] = "Woo!  I'll take it!"
 trade_accept[0, 1] = "Thanks, Clawdette!"
@@ -71,7 +75,10 @@ trade_accept[2, 1] = "Don't let them touch eachother!"
 trade_accept[3, 0] = "Aha, yes!"
 trade_accept[3, 1] = "Looks great!"
 
-trade_accept[4, 0] = "Have a good day!"
+trade_accept[4, 0] = "Here you go!"
+trade_accept[4, 1] = "Put those bones to good use!"
+
+trade_accept[5, 0] = "Have a good day!"
 
 
 trade_reject[0, 0] = "Is that a good deal?  I don't know, maybe something else..."
@@ -90,7 +97,11 @@ trade_reject[3, 0] = "Is that a good deal?  I don't know, maybe something else..
 trade_reject[3, 1] = "Something about that doesn't look right."
 trade_reject[3, 2] = "I think I might already have some of that.  Maybe...?"
 
-trade_reject[4, 0] = "Just leave me any old thing."
+trade_reject[4, 0] = "Is that a good deal?  I don't know, maybe something else..."
+trade_reject[4, 1] = "Something about that doesn't look right."
+trade_reject[4, 2] = "I think I might already have some of that.  Maybe...?"
+
+trade_reject[5, 0] = "Just leave me any old thing."
 
 out_of_trades[0] = "I think I'm done trading for today."
 out_of_trades[1] = "Thanks for trading with me!  It's so fun!"
@@ -118,26 +129,33 @@ chat[3, 1] = "I have one!"
 chat[3, 2] = "Can you believe they're just lying around for anyone to find?"
 chat[3, 3] = "Anyway, will you give me something for my stick?"
 
-chat[4, 0] = "You're so great, Clawdette!  Thanks for all of the trades!"
-chat[4, 1] = "Oh, that reminds me..."
-chat[4, 2] = "You look like you're outgrowing your shell."
-chat[4, 3] = "And I found this shell that reminded me of you!"
-chat[4, 4] = "It's your favorite color!"
-chat[4, 5] = "I'll trade it to you for..." 
-chat[4, 6] = "Anything at all, because you're such a good friend!"
+chat[4, 0] = "Emolie gave me some fish bones."
+chat[4, 1] = "She doesn't like eating the bones."
+chat[4, 2] = "I agree!" 
+chat[4, 3] = "They taste bad!"
+chat[4, 4] = "Have you tried them?  I can trade them to you!"
 
-chat[5, 0] = "Enjoy your new shell!"
-chat[5, 1] = "Hey, if you're not doing anything tomorrow..."
-chat[5, 2] = "Want to hang out?"
-chat[5, 3] = "We can go for a walk, collect stuff together..."
-chat[5, 4] = "Maybe figure out those magic pebbles?"
+chat[5, 0] = "You're so great, Clawdette!  Thanks for all of the trades!"
+chat[5, 1] = "Oh, that reminds me..."
+chat[5, 2] = "You look like you're outgrowing your shell."
+chat[5, 3] = "And I found this shell that reminded me of you!"
+chat[5, 4] = "It's your favorite color!"
+chat[5, 5] = "I'll trade it to you for..." 
+chat[5, 6] = "Anything at all, because you're such a good friend!"
+
+chat[6, 0] = "Enjoy your new shell!"
+chat[6, 1] = "Hey, if you're not doing anything tomorrow..."
+chat[6, 2] = "Want to hang out?"
+chat[6, 3] = "We can go for a walk, collect stuff together..."
+chat[6, 4] = "Maybe figure out those magic pebbles?"
 
 chat_loop_point[0] = 6
 chat_loop_point[1] = 1
 chat_loop_point[2] = 0
 chat_loop_point[3] = 2
-chat_loop_point[4] = 2
-chat_loop_point[5] = 1
+chat_loop_point[4] = 3
+chat_loop_point[5] = 2
+chat_loop_point[6] = 1
 
 chat_index = 0
 
@@ -146,8 +164,8 @@ active_text = ""
 tx = x
 ty = y
 tx_offset = 0
-ty_offset = -42
-ty_speed = 0.5
+ty_offset = -48
+ty_speed = 0.25
 text_time = 80
 text_color = make_colour_rgb(255, 107, 107)
 </string>

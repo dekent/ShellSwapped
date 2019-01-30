@@ -40,6 +40,8 @@ value[item_to_index(seaweed)] = 1
 value[item_to_index(stud)] = 4
 value[item_to_index(live_fish)] = 0
 value[item_to_index(dead_fish)] = 0
+value[item_to_index(fish_bones)] = 0
+value[item_to_index(sponge)] = 2
 
 value[item_to_index(quarter)] = 0
 value[item_to_index(rock1)] = 2
@@ -94,6 +96,8 @@ chat_loop_point[2] = 2
 chat_index = 0
 
 text_timer = 0
+text_time = 80
+ty_speed = 0.5
 active_text = ""
 tx = x
 ty = y
@@ -123,7 +127,7 @@ text_color = make_colour_rgb(243, 134, 48)
             <string>//text updates
 if (text_timer &gt; 0)
 {
-    ty -= 0.5
+    ty -= ty_speed
     text_timer --
 }
 
@@ -139,7 +143,7 @@ if (dst &lt; trade_radius &amp;&amp; keyboard_check_pressed(ord('X')))
     if (current_trade &gt;= array_length_1d(trades))
     {
         active_text = choose_from_array(out_of_trades)
-        text_timer = 30
+        text_timer = text_time
         tx = x + 8
         ty = y - 40
     }
@@ -243,7 +247,7 @@ if (dst &lt; trade_radius &amp;&amp; keyboard_check_pressed(ord('X')))
             {
                 active_text = choose_from_array_2d(trade_accept, current_trade)
             }
-            text_timer = 40
+            text_timer = text_time
             tx = x + 8
             ty = y - 40
             
@@ -254,7 +258,7 @@ if (dst &lt; trade_radius &amp;&amp; keyboard_check_pressed(ord('X')))
         else
         {
             active_text = choose_from_array_2d(trade_reject, current_trade)
-            text_timer = 40
+            text_timer = text_time
             tx = x + 8
             ty = y - 40
         }
@@ -263,7 +267,7 @@ if (dst &lt; trade_radius &amp;&amp; keyboard_check_pressed(ord('X')))
 else if (dst &lt; trade_radius &amp;&amp; keyboard_check_pressed(ord('C')))
 {
     active_text = chat[current_trade, chat_index]
-    text_timer = 40
+    text_timer = text_time
     tx = x + 8
     ty = y - 40
     
