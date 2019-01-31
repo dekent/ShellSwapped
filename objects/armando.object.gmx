@@ -59,29 +59,35 @@ trade_amounts[1] = 1
 trades[0] = live_fish
 trades[1] = penny
 
-trade_accept[0, 0] = "Bloop."
-trade_accept[0, 1] = "Bloop."
-trade_accept[1, 0] = "Bloop."
-trade_accept[1, 1] = "Bloop."
+trade_accept[0, 0] = "OMG is this for me?  Thank you!"
+trade_accept[1, 0] = "Wowee! Got me again!"
 
-trade_reject[0, 0] = "Bloop."
-trade_reject[0, 1] = "Bloop."
-trade_reject[1, 0] = "Bloop."
-trade_reject[1, 1] = "Bloop."
+trade_reject[0, 0] = "No, I'm good.  Thanks."
+trade_reject[0, 1] = "I've got everything I need right here."
+trade_reject[1, 0] = "No, really, I'm good."
 
-out_of_trades[0] = "Bloop."
-out_of_trades[1] = "Bloop."
+out_of_trades[0] = "I'm 100% sure you can't get me anything else."
+out_of_trades[1] = "I'm totally set now."
 
-chat[0, 0] = "Bloop."
-chat[0, 1] = "Bloop."
-chat[1, 0] = "Bloop."
-chat[1, 1] = "Bloop."
-chat[2, 0] = "Bloop."
-chat[2, 1] = "Bloop."
+chat[0, 0] = "Oh hey, didn't feel you there."
+chat[0, 1] = "That's a nice shell home you got there."
+chat[0, 2] = "But if you want a really nice home, rocks are where it's at."
+chat[0, 3] = "If you're looking to trade, I'm not in the market for anything."
+chat[0, 4] = "Got my rock right here."
+chat[1, 0] = "Oh hey, trade crab."
+chat[1, 1] = "I wanna thank you again for this second home."
+chat[1, 2] = "I'm gonna make a vacation home on the other side of the beach."
+chat[1, 3] = "I'm gonna have so many rock parties."
+chat[1, 4] = "It doesn't get any better than this."
+chat[2, 0] = "Oh hey."
+chat[2, 1] = "I'm gonna start renting my properties on seabnb."
+chat[2, 2] = "Wanna come to one of my rock parties?"
+chat[2, 3] = "You're on the list, trade crab."
+chat[2, 4] = "I hope Emily comes, too..."
 
-chat_loop_point[0] = 0
-chat_loop_point[1] = 0
-chat_loop_point[2] = 0
+chat_loop_point[0] = 3
+chat_loop_point[1] = 3
+chat_loop_point[2] = 3
 
 chat_index = 0
 

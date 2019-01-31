@@ -18,6 +18,7 @@
   <sprites name="sprites">
     <sprite>sprites\clawdette_idle</sprite>
     <sprite>sprites\clawdette_walk</sprite>
+    <sprite>sprites\dad_idle</sprite>
     <sprite>sprites\clawson_idle</sprite>
     <sprite>sprites\emolie_idle</sprite>
     <sprite>sprites\hermi_idle</sprite>
@@ -99,6 +100,8 @@
   </fonts>
   <objects name="objects">
     <object>objects\clawdette</object>
+    <object>objects\clawdette_cutscene</object>
+    <object>objects\dad_cutscene</object>
     <object>objects\clawson</object>
     <object>objects\emolie</object>
     <object>objects\hermi</object>
@@ -142,6 +145,7 @@
     <object>objects\family_sponge</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room1</room>
     <room>rooms\room0</room>
   </rooms>
   <help>

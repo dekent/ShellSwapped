@@ -532,6 +532,11 @@ switch (mode)
         }
     break
 }
+
+// ocean sound effect (tied to Clawdette's y)
+//var wave_instance = instance_find(wave, 0)
+//var wave_sound = snd_wave
+
 </string>
           </argument>
         </arguments>

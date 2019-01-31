@@ -10,18 +10,15 @@
   <persistent>0</persistent>
   <colour>11523057</colour>
   <showcolour>-1</showcolour>
-  <code>randomize()
-draw_set_font(font0)
-draw_set_halign(fa_center)
-draw_set_valign(fa_bottom)
-
-global.inventory = array_create(20)
+  <code>global.inventory = array_create(20)
 global.inv_sprites = ds_list_create()
 
 global.traders_list = 0
 global.trade_given_list = 0
 global.trade_received_list = 0
-global.trade_count = 0</code>
+global.trade_count = 0
+
+scr_inv_gain_item(sponge)</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>0</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -70,13 +67,13 @@ global.trade_count = 0</code>
     <instance objName="emolie" x="1598" y="919" name="inst_15EFE2BD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="olly" x="1995" y="1317" name="inst_0FAD30D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="armando" x="2573" y="1044" name="inst_EAA2FD50" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="clawdette" x="553" y="1330" name="inst_FDCC1DC5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="clawdette" x="97" y="1209" name="inst_FDCC1DC5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="penny" x="2771" y="1855" name="inst_F1B36363" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="pebble" x="2287" y="862" name="inst_E2350F9D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="pebble" x="1672" y="1136" name="inst_50A75EAE" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="pebble" x="1648" y="1096" name="inst_BBE9510C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="seaweed" x="859" y="735" name="inst_2D52864F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="seaweed" x="1336" y="510" name="inst_46C367CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="seaweed" x="1557" y="462" name="inst_46C367CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="rock2" x="1949" y="1129" name="inst_90AC4C92" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="driftwood" x="1102" y="1852" name="inst_65883780" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="big_rock4" x="1949" y="863" name="inst_28DFED15" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -92,7 +89,7 @@ global.trade_count = 0</code>
     <instance objName="shelldon" x="1010" y="1298" name="inst_72BF83A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="shell_pile" x="891" y="1224" name="inst_8656562A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="fish_bones" x="784" y="696" name="inst_72956062" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="seaweed" x="2198" y="343" name="inst_66BDEAC0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="seaweed" x="2353" y="170" name="inst_66BDEAC0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

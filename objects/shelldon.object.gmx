@@ -33,8 +33,8 @@ cx = x
 cy = y + 24
 depth = -cy
 
-trade_radius = 150
-value[item_to_index(penny)] = 2
+trade_radius = 200
+value[item_to_index(penny)] = 1
 value[item_to_index(pearl)] = 3
 value[item_to_index(pebble)] = 0
 value[item_to_index(seaweed)] = 1
@@ -49,24 +49,26 @@ value[item_to_index(rock1)] = 0
 value[item_to_index(rock2)] = 0
 value[item_to_index(driftwood)] = 0
 
-current_trade = 14
-trade_amounts[0] = 10
+current_trade = 0
+trade_amounts[0] = 14
 
 trades[0] = spiral_shell
 
-trade_accept[0, 0] = "Bloop."
-trade_accept[0, 1] = "Bloop."
+trade_accept[0, 0] = "GREAT here's your new DREAM HOME."
+trade_accept[0, 1] = "That's a DEAL this SHELL should fit you WELL"
 
 trade_reject[0, 0] = "Bloop."
-trade_reject[0, 1] = "Bloop."
 
-out_of_trades[0] = "Bloop."
-out_of_trades[1] = "Bloop."
+out_of_trades[0] = "No REFUNDS!"
+out_of_trades[1] = "I don't think you have a TWO SHELL income..."
 
-chat[0, 0] = "Bloop."
-chat[0, 1] = "Bloop."
-chat[1, 0] = "Bloop."
-chat[1, 1] = "Bloop."
+chat[0, 0] = "Hey there looking to BUY or TRADE?"
+chat[0, 1] = "I've got LOTS HERE check out the GOODS behind me."
+chat[0, 2] = "Plenty of SATISFIED CUSTOMERS."
+chat[0, 3] = "I'm the coast's NUMBER ONE RATED REALTOR!"
+chat[0, 4] = "You won't find these kind of DEALS on seaBay."
+chat[1, 0] = "Enjoy your NEW SHELL."
+chat[1, 1] = "Thanks for doing BUSINESS with me."
 
 chat_loop_point[0] = 0
 chat_loop_point[1] = 0
@@ -206,11 +208,25 @@ if (dst &lt; trade_radius &amp;&amp; keyboard_check_pressed(ord('X')))
             chat_index = 0
             
             var shells = instance_find(shell_pile, 0)
-            shells.sprite_index = shell_pile2
+            with (shells)
+            {
+                shells.sprite_index = shell_pile2
+            }
         }
         else
         {
-            active_text = choose_from_array_2d(trade_reject, current_trade)
+            if (sum &lt;= 4)
+            {
+                active_text = "Listen kid homes are EXPENSIVE you can do better."
+            }
+            else if (sum &lt;= 9)
+            {
+                active_text = "The PREVIOUS OWNERS are asking for WAY MORE than this!"
+            }
+            else
+            {
+                active_text = "I CAN'T QUITE make that DEAL but you're CLOSE..."
+            }
             text_timer = text_time
             tx = x + tx_offset
             ty = y + ty_offset

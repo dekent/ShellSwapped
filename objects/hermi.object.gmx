@@ -34,8 +34,8 @@ depth = -cy
 
 trade_radius = 150
 value[item_to_index(penny)] = 5
-value[item_to_index(pearl)] = 20
-value[item_to_index(pebble)] = 2
+value[item_to_index(pearl)] = 10
+value[item_to_index(pebble)] = 1
 value[item_to_index(seaweed)] = 0
 value[item_to_index(stud)] = 5
 value[item_to_index(live_fish)] = 2
