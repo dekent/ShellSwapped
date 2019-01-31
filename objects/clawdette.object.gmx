@@ -472,9 +472,11 @@ switch (mode)
                 {
                     deselect_item(selected_item)
                     selected_item = (selected_item + 1) % ds_list_size(global.inv_sprites)
+                    audio_play_sound(snd_select, 100, false);
                 }
                 if (keyboard_check_pressed(vk_left))
                 {
+                    audio_play_sound(snd_select, 100, false);
                     deselect_item(selected_item)
                     if (selected_item == 0)
                     {

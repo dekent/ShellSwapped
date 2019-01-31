@@ -14,6 +14,8 @@
     <sound>sound\snd_wave</sound>
     <sound>sound\snd_pick_penny</sound>
     <sound>sound\snd_fish</sound>
+    <sound>sound\snd_pebbles</sound>
+    <sound>sound\snd_select</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\clawdette_idle</sprite>
