@@ -7,4 +7,6 @@ switch (argument0)
     case 5: return inv_stud
     case 9: return inv_live_fish
     case 10: return inv_dead_fish
+    case 11: return inv_fish_bones
+    case 12: return inv_sponge
 }

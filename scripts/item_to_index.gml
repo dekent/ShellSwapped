@@ -11,4 +11,6 @@ switch (argument0)
     case driftwood: return 8
     case live_fish: return 9
     case dead_fish: return 10
+    case fish_bones: return 11
+    case sponge: return 12
 }

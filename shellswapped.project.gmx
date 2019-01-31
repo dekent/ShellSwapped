@@ -22,6 +22,7 @@
     <sprite>sprites\clawdette_walk</sprite>
     <sprite>sprites\clawson_idle</sprite>
     <sprite>sprites\emolie_idle</sprite>
+    <sprite>sprites\hermi_idle</sprite>
     <sprite>sprites\shelldon_idle</sprite>
     <sprite>sprites\icon_pearl</sprite>
     <sprite>sprites\icon_pebbles</sprite>
@@ -33,6 +34,8 @@
     <sprite>sprites\icon_live_fish3</sprite>
     <sprite>sprites\icon_live_fish4</sprite>
     <sprite>sprites\icon_dead_fish</sprite>
+    <sprite>sprites\icon_sponge</sprite>
+    <sprite>sprites\icon_fish_bones</sprite>
     <sprite>sprites\pearl_sprite</sprite>
     <sprite>sprites\pebble_sprite</sprite>
     <sprite>sprites\seaweed_sprite</sprite>
@@ -65,6 +68,11 @@
     <sprite>sprites\live_fish3</sprite>
     <sprite>sprites\live_fish4</sprite>
     <sprite>sprites\dead_fish_sprite</sprite>
+    <sprite>sprites\fish_bones_sprite</sprite>
+    <sprite>sprites\sponge_sprite</sprite>
+    <sprite>sprites\shell_pile1</sprite>
+    <sprite>sprites\shell_pile2</sprite>
+    <sprite>sprites\family_sponge_sprite</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -95,8 +103,9 @@
     <object>objects\clawdette</object>
     <object>objects\clawson</object>
     <object>objects\emolie</object>
+    <object>objects\hermi</object>
     <object>objects\shelldon</object>
-    <object>objects\oyster</object>
+    <object>objects\olly</object>
     <object>objects\armando</object>
     <object>objects\inv</object>
     <object>objects\inv_pearl</object>
@@ -106,6 +115,8 @@
     <object>objects\inv_stud</object>
     <object>objects\inv_live_fish</object>
     <object>objects\inv_dead_fish</object>
+    <object>objects\inv_fish_bones</object>
+    <object>objects\inv_sponge</object>
     <object>objects\pushable</object>
     <object>objects\quarter</object>
     <object>objects\rock1</object>
@@ -117,6 +128,8 @@
     <object>objects\pebble</object>
     <object>objects\seaweed</object>
     <object>objects\stud</object>
+    <object>objects\fish_bones</object>
+    <object>objects\sponge</object>
     <object>objects\live_fish</object>
     <object>objects\dead_fish</object>
     <object>objects\spiral_shell</object>
@@ -127,6 +140,8 @@
     <object>objects\big_rock2</object>
     <object>objects\big_rock3</object>
     <object>objects\big_rock4</object>
+    <object>objects\shell_pile</object>
+    <object>objects\family_sponge</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

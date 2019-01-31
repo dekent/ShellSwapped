@@ -12,5 +12,15 @@ switch(argument0)
     break;
     case live_fish: audio_play_sound(snd_seaweed, 100, false);
     break;
+    case dead_fish: audio_play_sound(snd_seaweed, 100, false);
+    break;
+    case fish_bones: audio_play_sound(snd_grab, 100, false);
+    break;
+    case sponge: audio_play_sound(snd_seaweed, 100, false);
+    break;
+    case spiral_shell: audio_play_sound(snd_grab, 100, false);
+    break;
+    case conch_shell: audio_play_sound(snd_grab, 100, false);
+    break;
 }
 

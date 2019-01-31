@@ -10,7 +10,15 @@ switch(argument0)
     break;
     case stud: audio_play_sound(snd_grab, 100, false);
     break;
+    case quarter: audio_play_sound(snd_grab, 100, false);
+    break;
     case live_fish: audio_play_sound(snd_seaweed, 100, false);
+    break;
+    case dead_fish: audio_play_sound(snd_seaweed, 100, false);
+    break;
+    case fish_bones: audio_play_sound(snd_grab, 100, false);
+    break;
+    case sponge: audio_play_sound(snd_seaweed, 100, false);
     break;
 }
 
