@@ -472,11 +472,11 @@ switch (mode)
                 {
                     deselect_item(selected_item)
                     selected_item = (selected_item + 1) % ds_list_size(global.inv_sprites)
-                    audio_play_sound(snd_select, 100, false);
+                    //audio_play_sound(snd_select, 100, false);
                 }
                 if (keyboard_check_pressed(vk_left))
                 {
-                    audio_play_sound(snd_select, 100, false);
+                    //audio_play_sound(snd_select, 100, false);
                     deselect_item(selected_item)
                     if (selected_item == 0)
                     {
@@ -536,9 +536,25 @@ switch (mode)
 }
 
 // ocean sound effect (tied to Clawdette's y)
-//var wave_instance = instance_find(wave, 0)
-//var wave_sound = snd_wave
-
+var wave_instance = instance_find(wave, 0)
+var wave_sound = snd_wave
+var wave_vol = 1 - (y - 300)/1500.0
+if (wave_vol &lt; 0)
+{
+    wave_vol = 0
+}
+else if (wave_vol &gt; 1)
+{
+    wave_vol = 1
+}
+audio_sound_gain(wave_sound, wave_vol, 0)
+with (wave_instance)
+{
+    if (sprite_index == wave_in &amp;&amp; anim_counter == 0)
+    {
+        audio_play_sound(wave_sound, 100, false)
+    }
+}
 </string>
           </argument>
         </arguments>

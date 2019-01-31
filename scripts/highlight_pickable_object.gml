@@ -34,14 +34,22 @@ if (pick_object != noone)
         
         if (pick_object.object_index == spiral_shell || pick_object.object_index == conch_shell)
         {
-            //TODO: special case to end game
+            if (pick_object.object_index == spiral_shell)
+            {
+                global.final_sprite = clawdette_spiral
+            }
+            else if (pick_object.object_index == conch_shell)
+            {
+                global.final_sprite = clawdette_conch
+            }
+            room_goto(final)
         }
         else
         {
             scr_inv_gain_item(pick_object.object_index)
         }
         play_pick_sound(pick_object.object_index)
-        instance_destroy(pick_object.id)
+        instance_destroy(pick_object.id) 
         pick_object = noone
     }
 }

@@ -74,6 +74,9 @@
     <sprite>sprites\shell_pile1</sprite>
     <sprite>sprites\shell_pile2</sprite>
     <sprite>sprites\family_sponge_sprite</sprite>
+    <sprite>sprites\title_bar_sprite</sprite>
+    <sprite>sprites\clawdette_spiral</sprite>
+    <sprite>sprites\clawdette_conch</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -99,6 +102,8 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
+    <font>fonts\TitleFont</font>
+    <font>fonts\TitleInfo</font>
   </fonts>
   <objects name="objects">
     <object>objects\clawdette</object>
@@ -145,10 +150,16 @@
     <object>objects\big_rock4</object>
     <object>objects\shell_pile</object>
     <object>objects\family_sponge</object>
+    <object>objects\title_control</object>
+    <object>objects\final_control</object>
+    <object>objects\title_bar</object>
+    <object>objects\clawdette_final</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\title</room>
     <room>rooms\room1</room>
     <room>rooms\room0</room>
+    <room>rooms\final</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
