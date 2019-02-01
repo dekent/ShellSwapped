@@ -108,6 +108,7 @@
   <objects name="objects">
     <object>objects\clawdette</object>
     <object>objects\clawdette_cutscene</object>
+    <object>objects\clawdette_final</object>
     <object>objects\dad_cutscene</object>
     <object>objects\clawson</object>
     <object>objects\emolie</object>
@@ -153,7 +154,6 @@
     <object>objects\title_control</object>
     <object>objects\final_control</object>
     <object>objects\title_bar</object>
-    <object>objects\clawdette_final</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\title</room>

@@ -21,5 +21,8 @@
   <height>128</height>
   <frames>
     <frame index="0">images\clawdette_spiral_0.png</frame>
+    <frame index="1">images\clawdette_spiral_1.png</frame>
+    <frame index="2">images\clawdette_spiral_2.png</frame>
+    <frame index="3">images\clawdette_spiral_3.png</frame>
   </frames>
 </sprite>
